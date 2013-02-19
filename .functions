@@ -1,0 +1,35 @@
+#Growl Notify
+function gn {
+    /usr/local/bin/growlnotify Terminal -m "$@"
+}
+
+# long-running command growler
+# hooks for zsh, built on bash version at http://hints.macworld.com/article.php?story=20071009124425468
+ 
+preexec_functions+='save_preexec_time'
+save_preexec_time() {
+  export PREEXEC_TIME=$(date +'%s')
+  export PREEXEC_CMD="$1"
+}
+ 
+precmd_functions+='growl_about_long_running_commands'
+growl_about_long_running_commands() {  
+  exitstatus=$?
+  if [ $exitstatus -eq 0 ]; then
+    img="$HOME/.zsh/images/pass.png"
+  else
+    img="$HOME/.zsh/images/fail.png"
+  fi
+  
+  stop=$(date +'%s')
+  start=${PREEXEC_TIME:-$stop}
+  let elapsed=$stop-$start
+  max=${PREEXEC_MAX:-10}
+ 
+  if [ $elapsed -gt $max ]; then
+    growlnotify --image="$img" -n "LongRunningCommandGrowler" -m "exited with status $exitstatus after $elapsed secs" ${PREEXEC_CMD:-Some command}
+  fi
+  PREEXEC_TIME=
+  PREEXEC_CMD=
+}
+
