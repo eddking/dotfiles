@@ -1,0 +1,65 @@
+# Add some easy shortcuts for formatted directory listings and add a touch of color.
+alias ls='ls -1 -F --color=auto --group-directories-first'
+alias lsi='ls -1lh -F --color=auto --group-directories-first'
+alias l='ls -CF'
+ 
+# Make grep more user friendly by highlighting matches
+# and exclude grepping through .git folders.
+alias grep='grep --color=auto --exclude-dir=\.git'
+
+alias search='find . -print -type f | xargs grep -s'
+
+alias mvnb='mvn -DskipTests -DskipITs'
+alias mvnr='mvn jetty:run'
+alias mvnl='MAVEN_OPTS="-Xmx8g" mvn clean package exec:java'
+alias mvnln='mvnl -Dspring.profiles.active=no-media'
+alias mvns='mvnr -Djetty.port=9090 -DXmx=3g'
+alias gcm='git commit'
+alias gcmm='git commit -m'
+alias gst='git status'
+alias glg='git log --pretty=oneline --decorate --graph'
+alias gpl='git pull'
+alias gps='git push'
+alias grb='git rebase'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gfe='git fetch --all'
+alias gsh='git show'
+alias grm='git rm'
+alias gad='git add'
+alias grs='git reset'
+alias gdf='git diff'
+alias gbr='git branch'
+
+# Remove merged git branches
+function grmb {
+  current_branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+  if [ "$current_branch" != "master" ]; then
+    echo "WARNING: You are on branch $current_branch, NOT master."
+  fi
+    echo "Fetching merged branches..."
+  git remote prune origin
+  remote_branches=$(git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$")
+  local_branches=$(git branch --merged | grep -v 'master$' | grep -v "$current_branch$")
+  if [ -z "$remote_branches" ] && [ -z "$local_branches" ]; then
+    echo "No existing branches have been merged into $current_branch."
+  else
+    echo "This will remove the following branches:"
+    if [ -n "$remote_branches" ]; then
+      echo "$remote_branches"
+    fi
+    if [ -n "$local_branches" ]; then
+      echo "$local_branches"
+    fi
+    read -p "Continue? (y/n): " -n 1 choice
+    echo
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+      # Remove remote branches
+      git push origin `git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$" | sed 's/origin\//:/g' | tr -d '\n'`
+      # Remove local branches
+      git branch -d `git branch --merged | grep -v 'master$' | grep -v "$current_branch$" | sed 's/origin\///g' | tr -d '\n'`
+    else
+      echo "No branches removed."
+    fi
+  fi
+}
