@@ -17,7 +17,5 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=/Users/edd/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-
 unsetopt correct_all
+

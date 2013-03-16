@@ -1,6 +1,7 @@
 /*
 !.*
 .Bome/
+.CFUserTextEncoding
 .DS_Store
 .EasyPmd2/
 .FontForge/
@@ -15,6 +16,7 @@
 .basex
 .basexgui
 .bash_history
+.berkshelf/
 .bzr.log
 .cabal/
 .cache/
@@ -37,6 +39,7 @@
 .fonts/
 .gem/
 .ghc/
+.gitk
 .gradle/
 .gstreamer-0.10/
 .heroku/
@@ -57,12 +60,15 @@
 .nbprofiler/
 .neocon/
 .netbeans/
+.netrc
 .npm/
+.oh-my-zsh/
 .parallel/
 .pentadactyl/
 .pip/
 .pry_history
 .repoconfig/
+.rvm/
 .sh_history
 .sipp2.properties.xml
 .slocdata/
