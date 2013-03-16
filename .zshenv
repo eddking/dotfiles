@@ -3,6 +3,9 @@
 #Standard Path Shiz
 PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
+#Custom stuff
+PATH=$PATH:$HOME/bin
+
 #Python
 PATH=$PATH:/usr/local/share/python
 
@@ -10,7 +13,7 @@ PATH=$PATH:/usr/local/share/python
 PATH=$PATH:/usr/local/share/npm/bin
 
 #RVM (Ruby version manager)
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
 
 #Heroku
 PATH=$PATH:/usr/local/heroku/bin
