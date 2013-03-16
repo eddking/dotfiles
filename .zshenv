@@ -26,5 +26,5 @@ export NODE_PATH="/usr/local/lib/node"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home"
 
 #----- PYTHON ------
-
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
+#Disabled because pythonpath still exists within a virtalenv enviro ... we can do without it
+#export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
