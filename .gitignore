@@ -67,6 +67,7 @@
 .pentadactyl/
 .pip/
 .pry_history
+.psql_history
 .repoconfig/
 .rvm/
 .sh_history
