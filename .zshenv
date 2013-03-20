@@ -1,7 +1,7 @@
 #----- PATH ------
 
 #Standard Path Shiz
-PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 #Custom stuff
 PATH=$PATH:$HOME/bin
