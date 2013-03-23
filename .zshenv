@@ -18,6 +18,8 @@ PATH=$PATH:$HOME/.rvm/bin
 #Heroku
 PATH=$PATH:/usr/local/heroku/bin
 
+PATH=$PATH:/Users/edd/Programs/basex/bin
+
 export PATH
 
 #----- NODE ------
@@ -31,3 +33,8 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Hom
 #----- PYTHON ------
 #Disabled because pythonpath still exists within a virtalenv enviro ... we can do without it
 #export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
+#
+
+#----- EDITOR ------
+
+export EDITOR=mvim
