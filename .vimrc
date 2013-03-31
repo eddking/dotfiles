@@ -12,6 +12,15 @@ colorscheme solarized
 :nmap j gj
 :nmap k gk
 
+" disable the nav keys
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+
+" map esc to kj
+inoremap kj <Esc>
+
 " search hilighting
 :set incsearch
 :set ignorecase
