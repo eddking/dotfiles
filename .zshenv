@@ -1,7 +1,7 @@
 #----- PATH ------
 
 #Standard Path Shiz
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 #Custom stuff
 PATH=$PATH:$HOME/bin
@@ -37,4 +37,4 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Hom
 
 #----- EDITOR ------
 
-export EDITOR=mvim
+export EDITOR=vim
