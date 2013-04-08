@@ -8,10 +8,6 @@ autocmd vimenter * NERDTree
 set background=dark
 colorscheme solarized
 
-" make vim move into wrapped lines, not around them
-:nmap j gj
-:nmap k gk
-
 " disable the nav keys
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
