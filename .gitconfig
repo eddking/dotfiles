@@ -3,3 +3,5 @@
 [user]
 	name = Edd King
 	email = edd.king@semantico.com
+[push]
+	default = upstream
