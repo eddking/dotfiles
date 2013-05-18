@@ -2,8 +2,6 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-autocmd vimenter * NERDTree
-
 " color scheme
 set background=dark
 colorscheme solarized
@@ -23,3 +21,12 @@ inoremap kj <Esc>
 :set smartcase
 :set hlsearch
 :nmap \q :nohlsearch<CR>
+
+" indent with spaces
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+" Nerd Tree!
+:nmap \a :NERDTreeToggle<CR>
