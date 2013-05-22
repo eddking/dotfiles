@@ -30,3 +30,9 @@ set expandtab
 
 " Nerd Tree!
 :nmap \a :NERDTreeToggle<CR>
+
+" Supertab
+ let g:SuperTabDefaultCompletionType = 'context'
+
+" Eclim
+
