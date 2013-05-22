@@ -5,3 +5,5 @@
 	email = edd.king@semantico.com
 [push]
 	default = upstream
+[core]
+	excludesfile = /Users/edd/.gitignore_global
