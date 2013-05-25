@@ -1,4 +1,5 @@
 Bundle 'eddking/eclim-vundle'
-Bundle 'eddking/autocompl-pop-vundle'
+""Bundle 'eddking/autocompl-pop-vundle'
 Bundle 'airblade/vim-rooter'
-Bundle 'ervandew/supertab'
+""Bundle 'ervandew/supertab'
+Bundle 'Valloric/YouCompleteMe'

@@ -63,26 +63,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=blue ctermbg=0
 
 " -------------------------------------
-" Supertab
+" Eclim
 " -------------------------------------
- let g:SuperTabDefaultCompletionType = 'context'
-
-" -------------------------------------
-" Auto Complete Pop Up -- Intergration with Eclim
-" -------------------------------------
-let g:acp_behaviorJavaEclimLength = 3
-function MeetsForJavaEclim(context)
-    return g:acp_behaviorJavaEclimLength >= 0 &&
-            \ a:context =~ '\k\.\k\{' . g:acp_behaviorJavaEclimLength . ',}$'
-  endfunction
-  let g:acp_behavior = {
-      \ 'java': [{
-        \ 'command': "\<c-x>\<c-u>",
-        \ 'completefunc' : 'eclim#java#complete#CodeComplete',
-        \ 'meets'        : 'MeetsForJavaEclim',
-      \ }]
-    \ }
-
+let g:EclimCompletionMethod = 'omnifunc'
 " -------------------------------------
 " Snipets
 " -------------------------------------
