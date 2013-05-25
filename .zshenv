@@ -3,8 +3,8 @@
 #Standard Path Shiz
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-#Custom stuff
-PATH=$PATH:$HOME/bin
+#Custom stuff -- put ~/bin at front of path so we can override things manually
+PATH=$HOME/bin:$PATH
 
 #Python
 PATH=$PATH:/usr/local/share/python
