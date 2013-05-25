@@ -12,9 +12,6 @@ PATH=$PATH:/usr/local/share/python
 #Node
 PATH=$PATH:/usr/local/share/npm/bin
 
-#RVM (Ruby version manager)
-PATH=$PATH:$HOME/.rvm/bin
-
 #Heroku
 PATH=$PATH:/usr/local/heroku/bin
 
