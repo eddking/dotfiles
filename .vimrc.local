@@ -1,7 +1,10 @@
 UnBundle 'spf13/PIV'
-
 UnBundle 'arnaud-lb/vim-php-namespace'
 UnBundle  'beyondwords/vim-twig'
+UnBundle  'Shougo/neocomplcache'
+UnBundle 'Shougo/neosnippet'
+UnBundle  'honza/vim-snippets'
+
 
 set background=dark
 colorscheme solarized
@@ -56,5 +59,31 @@ let g:EclimJavaSearchSingleResult = 'tabnew'
 " -------------------------------------
 " less intrusive indent guides
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=blue ctermbg=0
+
+" -------------------------------------
+" Supertab
+" -------------------------------------
+ let g:SuperTabDefaultCompletionType = 'context'
+
+" -------------------------------------
+" Auto Complete Pop Up -- Intergration with Eclim
+" -------------------------------------
+let g:acp_behaviorJavaEclimLength = 3
+function MeetsForJavaEclim(context)
+    return g:acp_behaviorJavaEclimLength >= 0 &&
+            \ a:context =~ '\k\.\k\{' . g:acp_behaviorJavaEclimLength . ',}$'
+  endfunction
+  let g:acp_behavior = {
+      \ 'java': [{
+        \ 'command': "\<c-x>\<c-u>",
+        \ 'completefunc' : 'eclim#java#complete#CodeComplete',
+        \ 'meets'        : 'MeetsForJavaEclim',
+      \ }]
+    \ }
+
+" -------------------------------------
+" Snipets
+" -------------------------------------
+let g:snips_author = 'Edd King <edd.king@semantico.com>'

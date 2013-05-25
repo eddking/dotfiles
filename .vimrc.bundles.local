@@ -1,2 +1,4 @@
 Bundle 'eddking/eclim-vundle'
+Bundle 'eddking/autocompl-pop-vundle'
 Bundle 'airblade/vim-rooter'
+Bundle 'ervandew/supertab'
