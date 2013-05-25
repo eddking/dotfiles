@@ -1,0 +1,60 @@
+UnBundle 'spf13/PIV'
+
+UnBundle 'arnaud-lb/vim-php-namespace'
+UnBundle  'beyondwords/vim-twig'
+
+set background=dark
+colorscheme solarized
+
+" -------------------------------------
+" Basic re-mapping
+" -------------------------------------
+" disable the nav keys
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+
+" map esc to kj
+inoremap kj <Esc>
+
+" search hilighting
+:set incsearch
+:set ignorecase
+:set smartcase
+:set hlsearch
+:nmap \q :nohlsearch<CR>
+
+" indent with spaces
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+" -------------------------------------
+" Eclim
+" -------------------------------------
+let g:EclimJavaSearchSingleResult = 'tabnew'
+:nmap §1 :JavaCorrect<CR>
+:nmap §f :JavaFormat<CR>
+:nmap §i :JavaSearchContext<CR>
+:nmap §o :JavaImportOrganize<CR>
+:nmap §d :JavaDocPreview<CR>
+:nmap §r :JavaRename
+:nmap §t :JavaSearch
+:nmap §n :lnext<CR>
+:nmap §p :lprev<CR>
+
+" -------------------------------------
+" External Commands
+" -------------------------------------
+" run a maven build
+:nmap §m <Plug>RooterChangeToRootDirectory :!mvn -DskipTests -DskipITs<CR>
+
+" -------------------------------------
+" Make Pretty
+" -------------------------------------
+" less intrusive indent guides
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=0

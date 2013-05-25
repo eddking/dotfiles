@@ -60,6 +60,7 @@
 .mutt_certificates
 .muttrc.local
 .nbprofiler/
+.neocomplcache/
 .neocon/
 .netbeans/
 .netrc
@@ -76,6 +77,7 @@
 .sipp2.properties.xml
 .slocdata/
 .smb/
+.spf13-vim-3/
 .sqlite_history
 .ssh/
 .subversion/
@@ -92,7 +94,10 @@
 .vim/plugin/
 .vim/view/
 .vim*.tmp
+.vimbackup/
 .viminfo
+.vimundo/
+.vimviews/
 .wine/
 .xbmc/
 .yjp/
