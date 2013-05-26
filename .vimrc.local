@@ -1,9 +1,9 @@
 UnBundle 'spf13/PIV'
 UnBundle 'arnaud-lb/vim-php-namespace'
-UnBundle  'beyondwords/vim-twig'
-UnBundle  'Shougo/neocomplcache'
+UnBundle 'beyondwords/vim-twig'
+UnBundle 'Shougo/neocomplcache'
 UnBundle 'Shougo/neosnippet'
-UnBundle  'honza/vim-snippets'
+UnBundle 'honza/vim-snippets'
 
 
 set background=dark
@@ -34,12 +34,13 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" wha, we dont spellcheck on by default, makes spaces look like underscores
 set nospell
 
 " -------------------------------------
 " Eclim
 " -------------------------------------
-" caps lock key is mapped to §
+" caps lock key is mapped to § using PCKeyboardHack
 let g:EclimJavaSearchSingleResult = 'tabnew'
 nmap §1 :JavaCorrect<CR>
 nmap §f :JavaFormat<CR>
