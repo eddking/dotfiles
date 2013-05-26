@@ -22,11 +22,11 @@ inoremap <Down>  <NOP>
 inoremap kj <Esc>
 
 " search hilighting
-:set incsearch
-:set ignorecase
-:set smartcase
-:set hlsearch
-:nmap \q :nohlsearch<CR>
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+nmap \q :nohlsearch<CR>
 
 " indent with spaces
 set tabstop=4
@@ -34,25 +34,29 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+set nospell
+
 " -------------------------------------
 " Eclim
 " -------------------------------------
+" caps lock key is mapped to §
 let g:EclimJavaSearchSingleResult = 'tabnew'
-:nmap §1 :JavaCorrect<CR>
-:nmap §f :JavaFormat<CR>
-:nmap §i :JavaSearchContext<CR>
-:nmap §o :JavaImportOrganize<CR>
-:nmap §d :JavaDocPreview<CR>
-:nmap §r :JavaRename
-:nmap §t :JavaSearch
-:nmap §n :lnext<CR>
-:nmap §p :lprev<CR>
+nmap §1 :JavaCorrect<CR>
+nmap §f :JavaFormat<CR>
+nmap §g :JavaSearchContext<CR>
+nmap §i :JavaImport<CR>
+nmap §o :JavaImportOrganize<CR>
+nmap §d :JavaDocPreview<CR>
+nmap §r :JavaRename
+nmap §t :JavaSearch
+nmap §n :lnext<CR>
+nmap §p :lprev<CR>
 
 " -------------------------------------
 " External Commands
 " -------------------------------------
 " run a maven build
-:nmap §m <Plug>RooterChangeToRootDirectory :!mvn -DskipTests -DskipITs<CR>
+nmap §m <Plug>RooterChangeToRootDirectory :!mvn -DskipTests -DskipITs<CR>
 
 " -------------------------------------
 " Make Pretty
@@ -62,6 +66,13 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=blue ctermbg=0
 
+" When iterm eventually gets italics, hopefully this will work ..
+:highlight Comment term=italic ctermbg=8 ctermfg=10
+:highlight ExtraWhitespace ctermbg=8 ctermfg=13
+:autocmd ColorScheme * highlight ExtraWhitespace
+" Show trailing whitespace:
+:match ExtraWhitespace /\s\+$/
+set listchars=tab:›\ ,trail:.,extends:#,nbsp:. " :Highlight problematic whitespace
 " -------------------------------------
 " Eclim
 " -------------------------------------
