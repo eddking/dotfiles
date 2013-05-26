@@ -66,17 +66,23 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=blue ctermbg=0
 
-" When iterm eventually gets italics, hopefully this will work ..
-:highlight Comment term=italic ctermbg=8 ctermfg=10
+" Italics are dependent on getting an unstable version of iTerm and changing
+" terminfo  Im using iTerm sha: b3242cc and terminfo from this gist:
+" https://gist.github.com/sos4nt/3187620     ... works like a charm
+:highlight Comment cterm=italic ctermbg=8 ctermfg=10
+
+" Re-Highlight trailing whitespace in a less glaring fashion
 :highlight ExtraWhitespace ctermbg=8 ctermfg=13
 :autocmd ColorScheme * highlight ExtraWhitespace
 " Show trailing whitespace:
 :match ExtraWhitespace /\s\+$/
 set listchars=tab:›\ ,trail:.,extends:#,nbsp:. " :Highlight problematic whitespace
+
 " -------------------------------------
 " Eclim
 " -------------------------------------
 let g:EclimCompletionMethod = 'omnifunc'
+
 " -------------------------------------
 " Snipets
 " -------------------------------------
