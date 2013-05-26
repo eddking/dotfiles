@@ -22,11 +22,9 @@ PATH=$PATH:/Users/edd/Programs/basex/bin
 export PATH
 
 #----- NODE ------
-
 export NODE_PATH="/usr/local/lib/node"
 
 #----- JAVA ------
-
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home"
 
 #----- PYTHON ------
@@ -34,8 +32,10 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Hom
 #export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
 #
 
-#----- EDITOR ------
+#----- TERMINFO ------
+export TERM=xterm-256color-italic
 
+#----- EDITOR ------
 export EDITOR=vim
 
 # Path to your oh-my-zsh configuration.
