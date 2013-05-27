@@ -5,7 +5,6 @@ UnBundle 'Shougo/neocomplcache'
 UnBundle 'Shougo/neosnippet'
 UnBundle 'honza/vim-snippets'
 
-
 set background=dark
 colorscheme solarized
 
@@ -34,22 +33,49 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" wha, we dont spellcheck on by default, makes spaces look like underscores
+" wha, we dont want spellcheck on by default, gets confusing when underscores are
+" involved
 set nospell
+
+" -------------------------------------
+" This is a function to look for some parent directory containing one of the
+" matching paths. wrote it, and then didnt need it anymore. but its  nice...
+" -------------------------------------
+function! FindProjectRoot(paths)
+    if (len(a:paths) < 1)
+        return 0
+    endif
+    let lookFor = a:paths[0]
+    let pathMaker='%:p'
+    while(len(expand(pathMaker))>len(expand(pathMaker.':h')))
+        let pathMaker=pathMaker.':h'
+        let fileToCheck=expand(pathMaker).'/'.lookFor
+        if filereadable(fileToCheck)||isdirectory(fileToCheck)
+            return expand(pathMaker)
+        endif
+    endwhile
+    return FindProjectRoot(a:paths[1:])
+endfunction
+
 
 " -------------------------------------
 " Eclim
 " -------------------------------------
-" caps lock key is mapped to § using PCKeyboardHack
 let g:EclimJavaSearchSingleResult = 'tabnew'
+let g:EclimValidateSortResults = 'severity'
+let g:EclimLogLevel = 2
+let g:EclimSignLevel = 3
+let g:EclimLocateFileFuzzy = 0
+" caps lock key is mapped to § using PCKeyboardHack
 nmap §1 :JavaCorrect<CR>
 nmap §f :JavaFormat<CR>
 nmap §g :JavaSearchContext<CR>
 nmap §i :JavaImport<CR>
 nmap §o :JavaImportOrganize<CR>
 nmap §d :JavaDocPreview<CR>
-nmap §r :JavaRename
+nmap §c :JavaRename
 nmap §t :JavaSearch
+nmap §r :LocateFile<CR>
 nmap §n :lnext<CR>
 nmap §p :lprev<CR>
 
@@ -67,8 +93,8 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=blue ctermbg=0
 
-" Italics are dependent on getting an unstable version of iTerm and changing
-" terminfo  Im using iTerm sha: b3242cc and terminfo from this gist:
+" Italics are dependent on getting an in depelopment version of iTerm and changing
+" terminfo. Im using iTerm sha: b3242cc and terminfo from this gist:
 " https://gist.github.com/sos4nt/3187620     ... works like a charm
 :highlight Comment cterm=italic ctermbg=8 ctermfg=10
 
@@ -83,6 +109,20 @@ set listchars=tab:›\ ,trail:.,extends:#,nbsp:. " :Highlight problematic whites
 " Eclim
 " -------------------------------------
 let g:EclimCompletionMethod = 'omnifunc'
+
+" -------------------------------------
+" YouCompleteMe
+" -------------------------------------
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+
+let g:ycm_filetype_blacklist = {
+    \ 'locate_prompt' : 1,
+    \ 'notes' : 1,
+    \ 'markdown' : 1,
+    \ 'text' : 1,
+\}
+
 
 " -------------------------------------
 " Snipets
