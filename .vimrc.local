@@ -113,9 +113,11 @@ let g:EclimCompletionMethod = 'omnifunc'
 " -------------------------------------
 " YouCompleteMe
 " -------------------------------------
+let g:ycm_seed_identifiers_with_syntax = 1
+" dont want any random buffers popping up
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
-
+" prevent interference with eclim locate buffer"
 let g:ycm_filetype_blacklist = {
     \ 'locate_prompt' : 1,
     \ 'notes' : 1,
