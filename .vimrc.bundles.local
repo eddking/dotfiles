@@ -1,5 +1,5 @@
 Bundle 'eddking/eclim-vundle'
-""Bundle 'eddking/autocompl-pop-vundle'
 Bundle 'airblade/vim-rooter'
-""Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-repeat'
+Bundle 'terryma/vim-multiple-cursors'
