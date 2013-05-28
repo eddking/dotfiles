@@ -1,1 +1,2 @@
 osgi.instance.area.default=@user.home/workspaces/work
+org.eclim.java.import.exclude = ["^com.sun..*", "^sunw?..*", "^org.testng.collect..*",  "^com.beust.jcommander..*"]
