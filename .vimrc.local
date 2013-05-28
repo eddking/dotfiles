@@ -16,7 +16,10 @@ inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
 inoremap <Up>    <NOP>
 inoremap <Down>  <NOP>
-
+nnoremap <Left>  <NOP>
+nnoremap <Right> <NOP>
+nnoremap <Up>    <NOP>
+nnoremap <Down>  <NOP>
 " map esc to kj
 inoremap kj <Esc>
 
@@ -25,7 +28,6 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
-nmap \q :nohlsearch<CR>
 
 " indent with spaces
 set tabstop=4
@@ -36,6 +38,12 @@ set expandtab
 " wha, we dont want spellcheck on by default, gets confusing when underscores are
 " involved
 set nospell
+
+" Text Bubbling, somthing is messing with this atm, cba to fix
+nmap <C-Down> ]e
+nmap <C-Up> [e
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 
 " -------------------------------------
 " This is a function to look for some parent directory containing one of the
@@ -57,6 +65,10 @@ function! FindProjectRoot(paths)
     return FindProjectRoot(a:paths[1:])
 endfunction
 
+" -------------------------------------
+" General Plugin Mappings
+" -------------------------------------
+nmap \a :NERDTreeToggle<CR> :NERDTreeMirror<CR>
 
 " -------------------------------------
 " Eclim
@@ -125,6 +137,10 @@ let g:ycm_filetype_blacklist = {
     \ 'text' : 1,
 \}
 
+" -------------------------------------
+" NerdTree
+" -------------------------------------
+let g:NERDTreeWinSize = 50
 
 " -------------------------------------
 " Snipets
