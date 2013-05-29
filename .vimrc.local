@@ -146,3 +146,10 @@ let g:NERDTreeWinSize = 50
 " Snipets
 " -------------------------------------
 let g:snips_author = 'Edd King <edd.king@semantico.com>'
+
+let g:UltiSnipsExpandTrigger="§"
+let g:UltiSnipsListSnippets="<c-§>"
+let g:UltiSnipsJumpForwardTrigger="§"
+let g:UltiSnipsJumpBackwardTrigger="±"
+
+
