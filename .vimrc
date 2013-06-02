@@ -1,1 +1,1 @@
-/Users/edd/.spf13-vim-3/.vimrc
+.vim/.vimrc
