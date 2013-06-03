@@ -51,7 +51,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Use vi style movement on command line
 bindkey -v
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git, zsh-syntax-highlighting)
+plugins=(jira git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
