@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
 
 
 " Environment {
@@ -511,10 +511,10 @@
 
     " Fugitive {
         nnoremap <silent> <leader>gs :Gstatus<CR>
-        nnoremap <silent> <leader>gd :Gdiff<CR>
+        "nnoremap <silent> <leader>gd :Gdiff<CR> " this also barfs
         nnoremap <silent> <leader>gc :Gcommit<CR>
         nnoremap <silent> <leader>gb :Gblame<CR>
-        nnoremap <silent> <leader>gl :Glog<CR>
+        "nnoremap <silent> <leader>gl :Glog<CR> " this appears to barf
         nnoremap <silent> <leader>gp :Git push<CR>
         nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
         nnoremap <silent> <leader>gg :GitGutterToggle<CR>
