@@ -48,8 +48,11 @@ ZSH_THEME="robbyrussell"
 # Auto completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-# Use vi style movement on command line
-bindkey -v
+# Use vim to edit the current command line
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^V' edit-command-line
+ 
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(jira git zsh-syntax-highlighting)
 
