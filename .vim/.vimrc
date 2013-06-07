@@ -680,6 +680,7 @@ nmap §t :JavaSearch
 nmap §r :LocateFile<CR>
 nmap §n :lnext<CR>
 nmap §p :lprev<CR>
+nmap §q :lclose<CR>
 
 " -------------------------------------
 " External Commands
