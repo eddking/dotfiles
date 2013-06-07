@@ -264,7 +264,7 @@
     autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-
+    autocmd BufNewFile,BufRead *.ftl setf ftl
 " }
 
 " Key (re)Mappings {
