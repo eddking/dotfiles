@@ -596,6 +596,14 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" this causes vim to leave trailing whitespace on autoindented empty lines,
+" dont worry, it gets deleted when you save. works by making an edit and then
+" undoing it"
+inoremap <CR> <CR>x<BS>
+nnoremap o ox<BS>
+nnoremap O Ox<BS>
+
+
 " wha, we dont want spellcheck on by default, gets confusing when underscores are
 " involved
 set nospell
