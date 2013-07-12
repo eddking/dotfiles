@@ -614,6 +614,9 @@ nmap <C-Up> [e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+let @c='0vf;hyf;i;kjp0dt;okjp:s/ /_/eg:s/\.//eg:s/,//eg:s/(//eg:s/)//eg$0d$k0Plr(li"kjlxf;i")kjlxld$hhPhi,kjlvwhS"f;r,F(llvi"ujdd@c'
+
+
 " -------------------------------------
 " Make Pretty
 " -------------------------------------
