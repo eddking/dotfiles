@@ -142,8 +142,8 @@
         Bundle 'tpope/vim-unimpaired'
         Bundle 'SirVer/ultisnips'
         Bundle 'chaquotay/ftl-vim-syntax'
-
-" }
+        Bundle 'vim-scripts/YankRing.vim'
+    " }
 
 " General {
 
@@ -719,6 +719,10 @@ let g:UltiSnipsListSnippets="<c-§>"
 let g:UltiSnipsJumpForwardTrigger="§"
 let g:UltiSnipsJumpBackwardTrigger="±"
 
+" YankRing 
+nnoremap <silent> §y :YRShow<CR>
+let g:yankring_replace_n_pkey = '§['
+let g:yankring_replace_n_nkey = '§]'
 
 " Functions {
 
