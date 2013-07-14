@@ -9,7 +9,7 @@ PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 PATH=$HOME/bin:$PATH
 
 #Python
-PATH=$PATH:/usr/local/share/python
+#PATH=$PATH:/usr/local/share/python
 
 #Node
 PATH=$PATH:/usr/local/share/npm/bin
@@ -28,9 +28,8 @@ export NODE_PATH="/usr/local/lib/node"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home"
 
 #----- PYTHON ------
-#Disabled because pythonpath still exists within a virtalenv enviro ... we can do without it
-#export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
-#
+
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 #----- TERMINFO ------
 export TERM=xterm-256color-italic
