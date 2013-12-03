@@ -84,6 +84,7 @@
 .subversion/auth/
 .sysdb20/
 .swt/
+.terminfo/
 .vagrant.d/
 .vegas/
 .vim/.netrwhist
@@ -96,6 +97,7 @@
 .vim*.tmp
 .vimbackup/
 .viminfo
+.vimswap/
 .vimundo/
 .vimviews/
 .wine/
@@ -103,5 +105,7 @@
 .yjp/
 .zcompdump*
 .zhistory
+.zprezto/
 .zsh-update
 .zsh_history
+
