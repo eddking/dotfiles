@@ -37,9 +37,6 @@ export TERM=xterm-256color-italic
 #----- EDITOR ------
 export EDITOR=vim
 
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
-
 # Aliases
 . ~/.aliases
 . ~/.functions
@@ -47,15 +44,9 @@ ZSH_THEME="robbyrussell"
 # Auto completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-# Use vim to edit the current command line
-autoload edit-command-line
-zle -N edit-command-line
-bindkey '^V' edit-command-line
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
  
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(jira git zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
 unsetopt correct_all
 
