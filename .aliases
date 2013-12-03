@@ -1,14 +1,3 @@
-# Add some easy shortcuts for formatted directory listings and add a touch of color.
-alias ls='ls -1 -F --color=auto --group-directories-first'
-alias lsi='ls -1lh -F --color=auto --group-directories-first'
-alias l='ls -CF'
- 
-# Make grep more user friendly by highlighting matches
-# and exclude grepping through .git folders.
-alias grep='grep --color=auto --exclude-dir=\.git'
-
-alias search='find . -print -type f | xargs grep -s'
-
 alias mvnb='mvn -DskipTests -DskipITs'
 alias mvnr='mvn jetty:run'
 alias mvnl='MAVEN_OPTS="-Xmx8g" mvn clean package exec:java'
