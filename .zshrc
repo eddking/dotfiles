@@ -37,9 +37,6 @@ export TERM=xterm-256color-italic
 #----- EDITOR ------
 export EDITOR=vim
 
-# Aliases
-. ~/.aliases
-. ~/.functions
 
 # Auto completions
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -49,4 +46,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
  
 unsetopt correct_all
+
+#rm gets aliased with the -i option somewhere. stop that shit
+unalias rm
+alias rm='nocorrect rm'
+
+# Custom Aliases
+. ~/.aliases
+. ~/.functions
 
