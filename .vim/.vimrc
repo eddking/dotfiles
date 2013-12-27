@@ -1,5 +1,6 @@
 set nocompatible        " Must be first line
 
+
 filetype on
         filetype off
         set rtp+=~/.vim/bundle/vundle
@@ -39,7 +40,6 @@ Bundle 'eddking/eclim-vundle'
 
 " --- Python bundles
 Bundle 'klen/python-mode'
-Bundle 'python.vim'
 Bundle 'python_match.vim'
 Bundle 'pythoncomplete'
 
