@@ -56,10 +56,13 @@ Bundle 'dag/vim2hs'
 Bundle 'Twinside/vim-haskellConceal'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'ujihisa/neco-ghc'
+" ghcmod requires: cabal install ghc-mod
 Bundle 'eagletmt/ghcmod-vim'
 " vimproc requires compiling: cd ~/.vim/bundle/vimproc && make
 Bundle 'Shougo/vimproc'
+" cumino requires tmux>1.5 :  brew install tmux
 Bundle 'adinapoli/cumino'
+" hdevtools requires: cabal install hdevtools
 Bundle 'bitc/vim-hdevtools'
 
 " --- HTML bundles
