@@ -57,7 +57,7 @@ Bundle 'Twinside/vim-haskellConceal'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'ujihisa/neco-ghc'
 Bundle 'eagletmt/ghcmod-vim'
-Bundle 'Shougo/vimproc'
+Bundle 'Shougo/vimproc' " Requires compiling: cd ~/.vim/bundle/vimproc && make
 Bundle 'adinapoli/cumino'
 Bundle 'bitc/vim-hdevtools'
 
@@ -216,6 +216,8 @@ autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType haskell setlocal commentstring=--\ %s
 " Workaround broken colour highlighting in Haskell
 autocmd FileType haskell setlocal nospell
+
+
 
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 
@@ -604,6 +606,13 @@ nnoremap <silent> §y :YRShow<CR>
 let g:yankring_replace_n_pkey = '§['
 let g:yankring_replace_n_nkey = '§]'
 
+" -------------------------------------
+" Haskell Mode
+" -------------------------------------
+
+" Configure browser for haskell_doc.vim
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
 
 " -------------------------------------
 " Functions
