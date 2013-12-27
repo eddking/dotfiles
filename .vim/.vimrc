@@ -57,7 +57,8 @@ Bundle 'Twinside/vim-haskellConceal'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'ujihisa/neco-ghc'
 Bundle 'eagletmt/ghcmod-vim'
-Bundle 'Shougo/vimproc' " Requires compiling: cd ~/.vim/bundle/vimproc && make
+" vimproc requires compiling: cd ~/.vim/bundle/vimproc && make
+Bundle 'Shougo/vimproc'
 Bundle 'adinapoli/cumino'
 Bundle 'bitc/vim-hdevtools'
 
