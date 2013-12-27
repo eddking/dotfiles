@@ -72,6 +72,8 @@
 .pry_history
 .psql_history
 .repoconfig/
+.rbenv/
+.ropeproject/
 .rvm/
 .sh_history
 .sipp2.properties.xml
@@ -92,6 +94,7 @@
 .vim/bundle/
 .vim/doc/
 .vim/eclim/
+.vim/haskellmode.config
 .vim/plugin/
 .vim/view/
 .vim*.tmp
@@ -103,6 +106,7 @@
 .wine/
 .xbmc/
 .yjp/
+.zcompcache/
 .zcompdump*
 .zhistory
 .zprezto/
