@@ -87,6 +87,7 @@
 .sysdb20/
 .swt/
 .terminfo/
+.unite/
 .vagrant.d/
 .vegas/
 .vim/.netrwhist
