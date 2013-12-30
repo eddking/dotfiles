@@ -506,7 +506,6 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
 " Start in insert mode
-let g:unite_enable_start_insert = 1
 " Shorten the default update speed of 500ms
 let g:unite_update_time = 200
 
@@ -676,8 +675,8 @@ let g:unite_source_menu_menus.commands.command_candidates = [
     \['▷ jump to tag definition                                                                    ctrl-]', 'exe "normal \<ctrl-]>" '],
     \]
 
-nmap <silent> §§ :Unite menu:commands<CR>
-nmap <silent> §b :Unite buffer<CR>
+nmap <silent> §§ :Unite -start-insert menu:commands<CR>
+nmap <silent> §b :Unite -no-split buffer<CR>
 nmap <silent> §y :Unite history/yank<CR>
 
 " Custom Unite settings
@@ -686,6 +685,8 @@ function! s:unite_settings()
 
   nmap <buffer> <ESC> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
+  nmap <buffer> § <Plug>(unite_exit)
+  imap <buffer> § <Plug>(unite_exit)
   inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
   nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
   inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
