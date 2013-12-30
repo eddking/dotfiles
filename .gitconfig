@@ -7,3 +7,5 @@
 	default = upstream
 [core]
 	excludesfile = /Users/edd/.gitignore_global
+[github]
+	user = eddking
