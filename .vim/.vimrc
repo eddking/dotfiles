@@ -18,7 +18,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'spf13/vim-autoclose'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mbbill/undotree'
+"Bundle 'mbbill/undotree' " I've never needed this
 Bundle 'myusuf3/numbers.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/restore_view.vim'
@@ -26,6 +26,9 @@ Bundle 'mhinz/vim-signify'
 Bundle 'tpope/vim-abolish.git'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'matchit.zip'
 Bundle 'mileszs/ack.vim'
@@ -33,8 +36,9 @@ Bundle 'SirVer/ultisnips'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-scripts/YankRing.vim'
+Bundle 'godlygeek/tabular'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'Shougo/unite.vim'
 
 Bundle 'eddking/eclim-vundle'
 
@@ -188,7 +192,7 @@ set wildmode=list:longest,full  " Command <Tab> completion, list matches, then l
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
-set foldenable                  " Auto fold code
+set nofoldenable  " turned off code folding for now
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
@@ -204,7 +208,7 @@ set tabstop=4                   " An indentation every four columns
 set softtabstop=4               " Let backspace delete indent
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join
 set splitright                  " Puts new vsplit windows to the right of the current
-set splitbelow                  " Puts new split windows to the bottom of the current
+"set splitbelow                  " Puts new split windows to the bottom of the current
 set pastetoggle=<F12>           " pastetoggle
 
 "Strip trailing whitespace when writing files
@@ -334,6 +338,7 @@ nmap <silent> <leader>/ :set invhlsearch<CR>
 " Find merge conflict markers
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
+
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
@@ -368,8 +373,6 @@ map zh zH
 " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
 map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
-
-
 " this causes vim to leave trailing whitespace on autoindented empty lines,
 " dont worry, it gets deleted when you save. works by making an edit and then
 " undoing it"
@@ -386,7 +389,6 @@ vmap <C-Down> ]egv
 " -------------------------------------
 " Autocomplete
 " -------------------------------------
-
 
 if has("autocmd") && exists("+omnifunc")
     autocmd Filetype *
@@ -427,7 +429,7 @@ let g:ycm_filetype_blacklist = {
     \ 'text' : 1,
 \}
 
-" ------------------------------------    -
+" -------------------------------------
 " Eclim
 " -------------------------------------
 let g:EclimJavaSearchSingleResult = 'tabnew'
@@ -437,18 +439,18 @@ let g:EclimSignLevel = 3
 let g:EclimLocateFileFuzzy = 0
 let g:EclimCompletionMethod = 'omnifunc'
 " caps lock key is mapped to § using PCKeyboardHack
-nmap §1 :JavaCorrect<CR>
-nmap §f :JavaFormat<CR>
-nmap §g :JavaSearchContext<CR>
-nmap §i :JavaImport<CR>
-nmap §o :JavaImportOrganize<CR>
-nmap §d :JavaDocPreview<CR>
-nmap §c :JavaRename
-nmap §t :JavaSearch
-nmap §r :LocateFile<CR>
-nmap §n :lnext<CR>
-nmap §p :lprev<CR>
-nmap §q :lclose<CR>
+"nmap §1 :JavaCorrect<CR>
+"nmap §f :JavaFormat<CR>
+"nmap §g :JavaSearchContext<CR>
+"nmap §i :JavaImport<CR>
+"nmap §o :JavaImportOrganize<CR>
+"nmap §d :JavaDocPreview<CR>
+"nmap §c :JavaRename
+"nmap §t :JavaSearch
+"nmap §r :LocateFile<CR>
+"nmap §n :lnext<CR>
+"nmap §p :lprev<CR>
+"nmap §q :lclose<CR>
 
 " -------------------------------------
 " NerdTree
@@ -458,7 +460,6 @@ let g:NERDShutUp=1
 
 map \a :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
-nmap <leader>nt :NERDTreeFind<CR>
 
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -475,8 +476,6 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " -------------------------------------
 
 let g:ctrlp_working_path_mode = 'ra'
-nnoremap <silent> <D-t> :CtrlP<CR>
-nnoremap <silent> <D-r> :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
@@ -489,7 +488,6 @@ let g:ctrlp_user_command = {
         \ 'fallback': 'find %s -type f'
     \ }
 
-
 " -------------------------------------
 " UltiSnips
 " -------------------------------------
@@ -499,6 +497,200 @@ let g:UltiSnipsExpandTrigger="§"
 let g:UltiSnipsListSnippets="<c-§>"
 let g:UltiSnipsJumpForwardTrigger="§"
 let g:UltiSnipsJumpBackwardTrigger="±"
+
+" -------------------------------------
+" Unite
+" -------------------------------------
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+" Start in insert mode
+let g:unite_enable_start_insert = 1
+" Shorten the default update speed of 500ms
+let g:unite_update_time = 200
+
+let g:unite_source_menu_menus = {}
+let g:unite_source_menu_menus.commands = {
+    \ 'description' : 'Commands',
+    \}
+" a list of interesting commands
+" ⇒ denotes a non default keybinding
+" ▷ denotes a default keybinding unchanged
+" ▶ denotes a default keybinding that has been re-mapped to do somthing different
+let g:unite_source_menu_menus.commands.command_candidates = [
+    \['⇒ commands list            (Unite)                                                              §§', 'exe "normal §§"'],
+    \['⇒ buffer list              (Unite)                                                              §b', 'exe "normal §b"'],
+    \['⇒ yank history list        (Unite)                                                              §y', 'exe "normal §y"'],
+    \['⇒ bubble up                (Custom)                                                         <C-Up>', 'exe "normal \<C-Up>"'],
+    \['⇒ bubble down              (Custom)                                                       <C-Down>', 'exe "normal \<C-Down>"'],
+    \['⇒ find conflict markers    (Custom)                                                            ,fc', 'normal ,fc'],
+    \['⇒ toggle highlight search  (Custom)                                                             ,/', 'normal ,/'],
+    \['⇒ resize split to be equal (Custom)                                                             ,=', 'normal ,='],
+    \['⇒ TagBar toggle            (TagBar)                                                            ,tt', 'normal ,tt'],
+    \['⇒ format json file         (JsonTool)                                                          ,jt', 'normal ,jt'],
+    \['⇒ git status               (Fugitive)                                                          ,gs', 'Gstatus'],
+    \['⇒ git diff                 (Fugitive)                                                          ,gd', 'Gdiff'],
+    \['⇒ git commit               (Fugitive)                                                          ,gc', 'Gcommit'],
+    \['⇒ git blame                (Fugitive)                                                          ,gb', 'Gblame'],
+    \['⇒ git log                  (Fugitive)                                                          ,gl', 'Glog'],
+    \['⇒ git push                 (Fugitive)                                                          ,gp', 'Git push'],
+    \['⇒ git pull                 (Fugitive)                                                          ,gP', 'Git pull'],
+    \['⇒ git read                 (Fugitive)                                                          ,gr', 'Gread'],
+    \['⇒ git write                (Fugitive)                                                          ,gw', 'Gwrite'],
+    \['⇒ git edit                 (Fugitive)                                                          ,ge', 'Gedit'],
+    \['⇒ git prompt               (Fugitive)                                                             ', 'exe "Git! " input("git command: ")'],
+    \['⇒ diff get                 (Fugitive)                                                          ,dg', 'normal ,dg'],
+    \['⇒ diff put                 (Fugitive)                                                          ,dp', 'normal ,dp'],
+    \['⇒ nerd tree toggle         (NERDTree)                                                           \a', 'normal \a'],
+    \['⇒ nerd tree find           (NERDTree)                                                           ,e', 'normal ,e'],
+    \['⇒ add line above           (vim-unimpaired)                                               [<Space>', 'exe "normal [\<Space>"'],
+    \['⇒ add line below           (vim-unimpaired)                                               ]<Space>', 'exe "normal ]\<Space>"'],
+    \['⇒ quickfix next            (vim-unimpaired)                                                     ]q', 'normal ]q'],
+    \['⇒ quickfix previous        (vim-unimpaired)                                                     [q', 'normal [q'],
+    \['⇒ buffer next              (vim-unimpaired)                                                     ]b', 'normal ]b'],
+    \['⇒ buffer previous          (vim-unimpaired)                                                     [b', 'normal [b'],
+    \['⇒ coerce snake case        (vim-abolish)                                                       crs', 'normal crs'],
+    \['⇒ coerce mixed case        (vim-abolish)                                                       crm', 'normal crm'],
+    \['⇒ coerce camel case        (vim-abolish)                                                       crc', 'normal crc'],
+    \['⇒ coerce upper case        (vim-abolish)                                                       cru', 'normal cru'],
+    \['⇒ signify toggle           (Signify)                                                           ,gg', 'normal ,fc'],
+    \['⇒ previous hunk            (Signify)                                                            [c', 'normal ,fc'],
+    \['⇒ next hunk                (Signify)                                                            [c', 'normal ,fc'],
+    \['▷ vertical split                                                                           :vsplit', 'vsplit'],
+    \['▷ horizontal split                                                                          :split', 'split'],
+    \['▷ new tab                                                                                  :tabnew', 'tabnew'],
+    \['▷ record a macro                                                                                 q', 'normal q' ],
+    \['▷ move forward one word                                                                          w', 'normal w' ],
+    \['▷ move to the end of the next word                                                               e', 'normal e' ],
+    \['▷ replace the character underneath the cursor                                                    r', 'normal r' ],
+    \['▷ move forward till the next character typed                                                     t', 'normal t' ],
+    \['▷ yank/copy                                                                                      y', 'normal y' ],
+    \['▷ undo                                                                                           u', 'normal u' ],
+    \['▷ enter insert mode                                                                              i', 'normal i' ],
+    \['▷ open a new line underneath the current line                                                    o', 'normal o' ],
+    \['▷ paste below or after                                                                           p', 'normal p' ],
+    \['▷ append text                                                                                    a', 'normal a' ],
+    \['▷ substitute the current character with text                                                     s', 'normal s' ],
+    \['▷ delete                                                                                         d', 'normal d' ],
+    \['▷ find the next character typed                                                                  f', 'normal f' ],
+    \['▷ leader key for many motions                                                                    g', 'normal g' ],
+    \['▷ move left                                                                                      h', 'normal h' ],
+    \['▷ move down                                                                                      j', 'normal j' ],
+    \['▷ move up                                                                                        k', 'normal k' ],
+    \['▷ move right                                                                                     l', 'normal l' ],
+    \['▷ lots of things                                                                                 z', 'normal z' ],
+    \['▷ delete the character underneath the cursor                                                     x', 'normal x' ],
+    \['▷ change                                                                                         c', 'normal c' ],
+    \['▷ enter visual mode                                                                              v', 'normal v' ],
+    \['▷ move back one word                                                                             b', 'normal b' ],
+    \['▷ move forwards to the next matched search pattern                                               n', 'normal n' ],
+    \['▷ set mark at cursor position                                                                    m', 'normal m' ],
+    \['▷ enter ex mode                                                                                  Q', 'normal Q' ],
+    \['▷ move forward one word by whitespace                                                            W', 'normal W' ],
+    \['▷ move to the end of the next word by whitespace                                                 E', 'normal E' ],
+    \['▷ enter replace mode                                                                             R', 'normal R' ],
+    \['▷ backwards till                                                                                 T', 'normal T' ],
+    \['▶ yank until the end of the line                                                                 Y', 'normal Y' ],
+    \['▷ undo all the changes on the current line                                                       U', 'normal U' ],
+    \['▷ enter insert mode at the first non whitespace character of the line                            I', 'normal I' ],
+    \['▷ open a new line above current line                                                             O', 'normal O' ],
+    \['▷ paste above or before                                                                          P', 'normal P' ],
+    \['▷ enter insert mode at the end of the line                                                       A', 'normal A' ],
+    \['▷ change the whole current line                                                                  S', 'normal S' ],
+    \['▷ delete until the end of the line                                                               D', 'normal D' ],
+    \['▷ backwards find                                                                                 F', 'normal F' ],
+    \['▷ move the end of current file                                                                   G', 'normal G' ],
+    \['▶ switch to previous tab                                                                         H', 'normal H' ],
+    \['▷ join with the line below                                                                       J', 'normal J' ],
+    \['▷ get the manual for the name of the shell command underneath the cursor                         K', 'normal K' ],
+    \['▶ switch to next tab                                                                             L', 'normal L' ],
+    \['▷ enter restricted mode                                                                          Z', 'normal Z' ],
+    \['▷ delete the character before the cursor                                                         X', 'normal X' ],
+    \['▷ change until the end of the line                                                               C', 'normal C' ],
+    \['▷ enter visual line mode                                                                         V', 'normal V' ],
+    \['▷ move backwards one word by whitespace                                                          B', 'normal B' ],
+    \['▷ move forwards to the next matched search pattern                                               N', 'normal N' ],
+    \['▷ move to the middle of the current window                                                       M', 'normal M' ],
+    \['▷ jump to mark                                                                                   `', 'normal `' ],
+    \['▷ switch the case of the character underneath the cursor and move to the right                   ~', 'normal ~' ],
+    \['▷ execute a command with the shell                                                               !', 'normal !' ],
+    \['▷ execute a macro                                                                                @', 'normal @' ],
+    \['▷ search backwards for the word underneath the cursor                                            #', 'normal #' ],
+    \['▷ move the end of the line                                                                       $', 'normal $' ],
+    \['▷ move the matching bracket                                                                      %', 'normal %' ],
+    \['▷ move the first non blank character of the line                                                 ^', 'normal ^' ],
+    \['▷ repeat the last substitution                                                                   &', 'normal &' ],
+    \['▷ search forwards for the word underneath the cursor                                             *', 'normal *' ],
+    \['▷ move backwards one sentence                                                                    (', 'normal (' ],
+    \['▷ move forwards one sentence                                                                     )', 'normal )' ],
+    \['▷ move to the first non blank character of the line above                                        -', 'normal -' ],
+    \['▷ fix indentation                                                                                =', 'normal =' ],
+    \['▷ move to the first non blank character of the current line                                      _', 'normal _' ],
+    \['▷ move to the first non black character of the line below                                        +', 'normal +' ],
+    \['▷ lots of stuff                                                                                  [', 'normal [' ],
+    \['▷ lots of stuff                                                                                  ]', 'normal ]' ],
+    \['▷ move backwards one paragraph                                                                   {', 'normal {' ],
+    \['▷ move forwards one paragraph                                                                    }', 'normal }' ],
+    \['▷ move to the first column of the current line                                                   |', 'normal |' ],
+    \['▷ move to the next match from f, t, or uppercase versions                                        ;', 'normal ;' ],
+    \['▷ jump to mark                                                                                   ''', 'normal ''' ],
+    \['▷ enter command mode                                                                             :', 'normal :' ],
+    \['▷ set register from which to yank, delete, or paste next                                         "', 'normal "' ],
+    \['▶ leader key for other commands                                                                  ,', 'normal ,' ],
+    \['▷ redo the last edit                                                                             .', 'normal .' ],
+    \['▷ search forwards                                                                                /', 'normal /' ],
+    \['▷ shift line to the left                                                                         <', 'normal <' ],
+    \['▷ shift line to the right                                                                        >', 'normal >' ],
+    \['▷ search backwards                                                                               ?', 'normal ?' ],
+    \['▷ move the beginning of the line                                                                 0', 'normal 0' ],
+    \['▷ jump to the previous place text was inserted                                                  g;', 'normal g;' ],
+    \['▷ jump to the last place jumped from                                                            ''''', 'normal ''''' ],
+    \['▷ enter visual block mode without conflicting with windows paste                            ctrl-q', 'exe "normal \<ctrl-q>" '],
+    \['▷ window commands                                                                           ctrl-w', 'exe "normal \<ctrl-w>" '],
+    \['▷ scroll down without moving the cursor unless nessacary                                    ctrl-e', 'exe "normal \<ctrl-e>" '],
+    \['▷ redo                                                                                      ctrl-r', 'exe "normal \<ctrl-r>" '],
+    \['▷ jump to an older entry in the tag stack                                                   ctrl-t', 'exe "normal \<ctrl-t>" '],
+    \['▷ scroll up without moving the cursor unless nessacary                                      ctrl-y', 'exe "normal \<ctrl-y>" '],
+    \['▷ scroll up half a screen                                                                   ctrl-u', 'exe "normal \<ctrl-u>" '],
+    \['▷ move forward in the jump list                                                             ctrl-i', 'exe "normal \<ctrl-i>" '],
+    \['▷ move backwards in the jump list                                                           ctrl-o', 'exe "normal \<ctrl-o>" '],
+    \['▶ Open CtrlP fuzzy search  (Ctrl-P)                                                         ctrl-p', 'exe "normal \<ctrl-p>" '],
+    \['▷ increment the number underneath the cursor                                                ctrl-a', 'exe "normal \<ctrl-a>" '],
+    \['▷ split the current window in two (type ctrl-w first)                                       ctrl-s', 'exe "normal \<ctrl-s>" '],
+    \['▷ scroll down half a screen                                                                 ctrl-d', 'exe "normal \<ctrl-d>" '],
+    \['▷ scroll forwards one page                                                                  ctrl-f', 'exe "normal \<ctrl-f>" '],
+    \['▷ show the current file name                                                                ctrl-g', 'exe "normal \<ctrl-g>" '],
+    \['▶ move focus to pane on the left                                                            ctrl-h', 'exe "normal \<ctrl-h>" '],
+    \['▶ move focus to pane beneath                                                                ctrl-j', 'exe "normal \<ctrl-j>" '],
+    \['▶ move focus to pane above                                                                  ctrl-k', 'exe "normal \<ctrl-k>" '],
+    \['▶ move focus to pane on the right                                                           ctrl-l', 'exe "normal \<ctrl-l>" '],
+    \['▷ suspend vim                                                                               ctrl-z', 'exe "normal \<ctrl-z>" '],
+    \['▷ decrement the number underneath the cursor                                                ctrl-x', 'exe "normal \<ctrl-x>" '],
+    \['▷ abort current command                                                                     ctrl-c', 'exe "normal \<ctrl-c>" '],
+    \['▷ enter visual block mode                                                                   ctrl-v', 'exe "normal \<ctrl-v>" '],
+    \['▷ scroll backwards one page                                                                 ctrl-b', 'exe "normal \<ctrl-b>" '],
+    \['▷ move down linewise                                                                        ctrl-n', 'exe "normal \<ctrl-n>" '],
+    \['▷ move to the first non blank character of the line below                                   ctrl-m', 'exe "normal \<ctrl-m>" '],
+    \['▷ to back to the previously edited file                                                     ctrl-^', 'exe "normal \<ctrl-^>" '],
+    \['▷ jump to tag definition                                                                    ctrl-]', 'exe "normal \<ctrl-]>" '],
+    \]
+
+nmap <silent> §§ :Unite menu:commands<CR>
+nmap <silent> §b :Unite buffer<CR>
+nmap <silent> §y :Unite history/yank<CR>
+
+" Custom Unite settings
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+
+  nmap <buffer> <ESC> <Plug>(unite_exit)
+  imap <buffer> <ESC> <Plug>(unite_exit)
+  inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+  nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+endfunction
 
 " -------------------------------------
 " TagBar
@@ -531,9 +723,21 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
+nnoremap <silent> <leader>gP :Git pull<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>ge :Gedit<CR>
+
+"for working with diffs
+nnoremap <silent> <leader>dg :diffget<CR>
+nnoremap <silent> <leader>dp :diffput<CR>
+vnoremap <silent> <leader>dg :diffget<CR>
+vnoremap <silent> <leader>dp :diffput<CR>
+
+" -------------------------------------
+" Signify
+" -------------------------------------
+
 nnoremap <silent> <leader>gg :SignifyToggle<CR>
 
 " -------------------------------------
@@ -541,8 +745,7 @@ nnoremap <silent> <leader>gg :SignifyToggle<CR>
 " -------------------------------------
 
 set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-nmap <leader>sl :SessionList<CR>
-nmap <leader>ss :SessionSave<CR>
+"I dont appear to have this plugin anymore..."
 
 " -------------------------------------
 " Ctags
@@ -587,9 +790,9 @@ endif
 " UndoTree
 " -------------------------------------
 
-nnoremap <Leader>u :UndotreeToggle<CR>
+""nnoremap <Leader>u :UndotreeToggle<CR>
 " If undotree is opened, it is likely one wants to interact with it.
-let g:undotree_SetFocusWhenToggle=1
+""let g:undotree_SetFocusWhenToggle=1
 
 " -------------------------------------
 " Indent Guides
@@ -603,12 +806,6 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
-" -------------------------------------
-" YankRing 
-" -------------------------------------
-nnoremap <silent> §y :YRShow<CR>
-let g:yankring_replace_n_pkey = '§['
-let g:yankring_replace_n_nkey = '§]'
 
 " -------------------------------------
 " Haskell Mode
