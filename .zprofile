@@ -1,65 +1,34 @@
-#
-# Browser
-#
-
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
-
-#
-# Editors
-#
+. /Users/edd/.zprezto/runcoms/zprofile
 
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
 
-#
-# Language
-#
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_UK.UTF-8'
-fi
-
-#
-# Paths
-#
-
-# Ensure path arrays do not contain duplicates.
-typeset -gU cdpath fpath mailpath path
-
-# Set the the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
-
-# Set the list of directories that Zsh searches for programs.
-path=(
-  $path
-)
-
-#
-# Less
-#
+export LANG='en_GB.UTF-8'
 
 # Set the default Less options.
 export LESS='-g -i -M -R -S -w -z-4'
 
-# Set the Less input preprocessor.
-if (( $+commands[lesspipe.sh] )); then
-  export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
-fi
+# Set the list of directories that Zsh searches for programs.
+path=(
+  $HOME/bin
+  /usr/local/{bin,sbin}
+  /usr/local/opt/ruby/bin
+  /usr/local/share/npm/bin
+  /usr/local/heroku/bin
+  $path
+)
 
-#
-# Temporary Files
-#
-if [[ ! -d "$TMPDIR" ]]; then
-  export TMPDIR="/tmp/$USER"
-  mkdir -p -m 700 "$TMPDIR"
-fi
 
-TMPPREFIX="${TMPDIR%/}/zsh"
-if [[ ! -d "$TMPPREFIX" ]]; then
-  mkdir -p "$TMPPREFIX"
-fi
+#----- NODE ------
+export NODE_PATH="/usr/local/lib/node"
+
+#----- JAVA ------
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home"
+
+#----- PYTHON ------
+
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+
+#----- TERMINFO ------
+export TERM=xterm-256color-italic
