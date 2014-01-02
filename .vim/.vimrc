@@ -493,10 +493,10 @@ let g:ctrlp_user_command = {
 " -------------------------------------
 let g:snips_author = 'Edd King <eddrollerking@gmail.com>'
 
-let g:UltiSnipsExpandTrigger="§"
-let g:UltiSnipsListSnippets="<c-§>"
-let g:UltiSnipsJumpForwardTrigger="§"
-let g:UltiSnipsJumpBackwardTrigger="±"
+let g:UltiSnipsExpandTrigger="±"
+let g:UltiSnipsJumpForwardTrigger="±"
+" dont care about this, map to plug
+let g:UltiSnipsJumpBackwardTrigger="<Plug>UltisnipsJumpBack"
 
 " -------------------------------------
 " Unite
@@ -518,9 +518,9 @@ let g:unite_source_menu_menus.commands = {
 " ▷ denotes a default keybinding unchanged
 " ▶ denotes a default keybinding that has been re-mapped to do somthing different
 let g:unite_source_menu_menus.commands.command_candidates = [
-    \['⇒ commands list            (Unite)                                                              §§', 'exe "normal §§"'],
-    \['⇒ buffer list              (Unite)                                                              §b', 'exe "normal §b"'],
-    \['⇒ yank history list        (Unite)                                                              §y', 'exe "normal §y"'],
+    \['⇒ commands list            (Unite)                                                        ,<space>', 'exe "normal ,\<space>"'],
+    \['⇒ buffer list              (Unite)                                                              ,b', 'exe "normal ,b"'],
+    \['⇒ yank history list        (Unite)                                                              ,y', 'exe "normal ,y"'],
     \['⇒ bubble up                (Custom)                                                         <C-Up>', 'exe "normal \<C-Up>"'],
     \['⇒ bubble down              (Custom)                                                       <C-Down>', 'exe "normal \<C-Down>"'],
     \['⇒ find conflict markers    (Custom)                                                            ,fc', 'normal ,fc'],
@@ -675,9 +675,9 @@ let g:unite_source_menu_menus.commands.command_candidates = [
     \['▷ jump to tag definition                                                                    ctrl-]', 'exe "normal \<ctrl-]>" '],
     \]
 
-nmap <silent> §§ :Unite -start-insert menu:commands<CR>
-nmap <silent> §b :Unite -no-split buffer<CR>
-nmap <silent> §y :Unite history/yank<CR>
+nmap <silent> ,<space> :Unite -start-insert menu:commands<CR>
+nmap <silent> ,b :Unite -no-split buffer<CR>
+nmap <silent> ,y :Unite history/yank<CR>
 
 " Custom Unite settings
 autocmd FileType unite call s:unite_settings()
@@ -685,8 +685,6 @@ function! s:unite_settings()
 
   nmap <buffer> <ESC> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
-  nmap <buffer> § <Plug>(unite_exit)
-  imap <buffer> § <Plug>(unite_exit)
   inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
   nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
   inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
