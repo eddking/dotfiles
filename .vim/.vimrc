@@ -386,6 +386,11 @@ nmap <C-Up> [e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+" reduce the keypresses!
+nmap <leader>w :w<CR>
+nmap <leader>q :bd<CR>
+nmap <leader>x :x<CR>
+
 " -------------------------------------
 " Autocomplete
 " -------------------------------------
