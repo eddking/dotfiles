@@ -22,6 +22,9 @@ alias grs='git reset'
 alias gdf='git diff'
 alias gbr='git branch'
 
+# Git remove deleted
+alias grmd='git status -s | grep "^ D" | cut -f 3 -d " " | xargs -I % git rm %'
+
 # Remove merged git branches
 function grmb {
   current_branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
