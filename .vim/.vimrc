@@ -423,6 +423,7 @@ set completeopt=menu,preview,longest
 " YouCompleteMe
 " -------------------------------------
 let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " dont want any random buffers popping up
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
@@ -783,6 +784,8 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 " -------------------------------------
 
 let g:pymode_lint_checker = "pyflakes"
+let g:pymode_lint_on_write = 0
+let g:pymode_breakpoint = 0
 let g:pymode_utils_whitespaces = 0
 let g:pymode_options = 0
 
