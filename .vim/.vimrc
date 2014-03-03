@@ -43,9 +43,9 @@ Bundle 'Shougo/unite.vim'
 Bundle 'eddking/eclim-vundle'
 
 " --- Python bundles
-Bundle 'klen/python-mode'
-Bundle 'python_match.vim'
-Bundle 'pythoncomplete'
+""Bundle 'klen/python-mode'
+""Bundle 'python_match.vim'
+""Bundle 'pythoncomplete'
 
 " --- Javascript bundles
 Bundle 'elzr/vim-json'
@@ -783,16 +783,22 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 " PyMode
 " -------------------------------------
 
-let g:pymode_lint_checker = "pyflakes"
-let g:pymode_lint_on_write = 0
-let g:pymode_breakpoint = 0
-let g:pymode_utils_whitespaces = 0
-let g:pymode_options = 0
+"let g:pymode_lint_checker = "pyflakes"
+"let g:pymode_lint_on_write = 0
+"let g:pymode_rope_lookup_project = 0
+"let g:pymode_breakpoint = 0
+"let g:pymode_utils_whitespaces = 0
+"let g:pymode_options = 0
+"" Don't autofold code
+"let g:pymode_folding = 0
+"" YCM uses jedi for autocompletion
+"" turn off rope completion
+"let g:pymode_rope_completion = 0
 
-" Disable if python support not present
-if !has('python')
-    let g:pymode = 1
-endif
+"" Disable if python support not present
+"if !has('python')
+    "let g:pymode = 1
+"endif
 
 " -------------------------------------
 " UndoTree
