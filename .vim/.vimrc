@@ -1,96 +1,95 @@
 set nocompatible        " Must be first line
 
-
 filetype on
         filetype off
         set rtp+=~/.vim/bundle/vundle
         call vundle#rc()
 
 " -------------------------------------
-" Bundles
+" Plugins
 " -------------------------------------
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'spf13/vim-colors'
-Bundle 'tpope/vim-surround'
-Bundle 'spf13/vim-autoclose'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'mbbill/undotree' " I've never needed this
-Bundle 'myusuf3/numbers.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'vim-scripts/restore_view.vim'
-Bundle 'mhinz/vim-signify'
-Bundle 'tpope/vim-abolish.git'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'matchit.zip'
-Bundle 'mileszs/ack.vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'godlygeek/tabular'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'Shougo/unite.vim'
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'spf13/vim-colors'
+Plugin 'tpope/vim-surround'
+Plugin 'spf13/vim-autoclose'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'mbbill/undotree' " I've never needed this
+Plugin 'myusuf3/numbers.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'vim-scripts/restore_view.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'tpope/vim-abolish.git'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'matchit.zip'
+Plugin 'mileszs/ack.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'godlygeek/tabular'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/unite.vim'
 
-Bundle 'eddking/eclim-vundle'
+Plugin 'eddking/eclim-vundle'
 
 " --- Python bundles
-""Bundle 'klen/python-mode'
-""Bundle 'python_match.vim'
-""Bundle 'pythoncomplete'
+""Plugin 'klen/python-mode'
+""Plugin 'python_match.vim'
+""Plugin 'pythoncomplete'
 
 " --- Javascript bundles
-Bundle 'elzr/vim-json'
-Bundle 'groenewege/vim-less'
-Bundle 'pangloss/vim-javascript'
-Bundle 'briancollins/vim-jst'
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'elzr/vim-json'
+Plugin 'groenewege/vim-less'
+Plugin 'pangloss/vim-javascript'
+Plugin 'briancollins/vim-jst'
+Plugin 'kchmck/vim-coffee-script'
 
 " --- Haskell bundles
-Bundle 'travitch/hasksyn'
-Bundle 'dag/vim2hs'
-Bundle 'Twinside/vim-haskellConceal'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'ujihisa/neco-ghc'
+Plugin 'travitch/hasksyn'
+Plugin 'dag/vim2hs'
+Plugin 'Twinside/vim-haskellConceal'
+Plugin 'lukerandall/haskellmode-vim'
+Plugin 'ujihisa/neco-ghc'
 " ghcmod requires: cabal install ghc-mod
-Bundle 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/ghcmod-vim'
 " vimproc requires compiling: cd ~/.vim/bundle/vimproc && make
-Bundle 'Shougo/vimproc'
+Plugin 'Shougo/vimproc'
 " cumino requires tmux>1.5 :  brew install tmux
-Bundle 'adinapoli/cumino'
+Plugin 'adinapoli/cumino'
 " hdevtools requires: cabal install hdevtools
-Bundle 'bitc/vim-hdevtools'
+Plugin 'bitc/vim-hdevtools'
 
 " --- HTML bundles
-Bundle 'amirh/HTML-AutoCloseTag'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'tpope/vim-haml'
+Plugin 'amirh/HTML-AutoCloseTag'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'tpope/vim-haml'
 
 " --- Ruby bundles
-Bundle 'tpope/vim-rails'
+Plugin 'tpope/vim-rails'
 
 " --- Go bundles
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'spf13/vim-gocode'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'spf13/vim-gocode'
 
 " --- Misc lang bundles
-Bundle 'tpope/vim-markdown'
-Bundle 'spf13/vim-preview'
-Bundle 'tpope/vim-cucumber'
-Bundle 'Puppet-Syntax-Highlighting'
+Plugin 'tpope/vim-markdown'
+Plugin 'spf13/vim-preview'
+Plugin 'tpope/vim-cucumber'
+Plugin 'Puppet-Syntax-Highlighting'
 
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 
 if executable('ctags')
-    Bundle 'majutsushi/tagbar'
+    Plugin 'majutsushi/tagbar'
 endif
 
 " -------------------------------------
