@@ -87,11 +87,7 @@ Bundle 'spf13/vim-preview'
 Bundle 'tpope/vim-cucumber'
 Bundle 'Puppet-Syntax-Highlighting'
 
-
-" --- Bundles with external dependencies
-if (has("python") || has("python3")) 
-    Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-endif
+Bundle 'bling/vim-airline'
 
 if executable('ctags')
     Bundle 'majutsushi/tagbar'
@@ -251,8 +247,7 @@ highlight SignColumn ctermbg=0
 "make the tildas on empty lines invisible
 hi NonText cterm=NONE ctermbg=8 ctermfg=8
 
-
-let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
 
 autocmd FileType java call Java_Config()
 
