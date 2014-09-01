@@ -32,6 +32,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'matchit.zip'
 Plugin 'mileszs/ack.vim'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
@@ -77,8 +78,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-rails'
 
 " --- Go bundles
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'spf13/vim-gocode'
+Plugin 'fatih/vim-go'
 
 " --- Misc lang bundles
 Plugin 'tpope/vim-markdown'
@@ -102,6 +102,10 @@ syntax on                   " Syntax highlighting
 set mouse=a                 " Automatically enable mouse usage
 set mousehide               " Hide the mouse cursor while typing
 scriptencoding utf-8
+set enc=utf-8
+set fileencoding=utf-8
+
+let g:UltiSnipsRemoveSelectModeMappings = 1
 
 " switch to the current file directory
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
@@ -208,9 +212,6 @@ set pastetoggle=<F12>           " pastetoggle
 
 "Strip trailing whitespace when writing files
 autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer>  call StripTrailingWhitespace()
-
-"Auto format go files before writing
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " specific formatting for haskell - this may go in a plugin in future
 autocmd FileType haskell setlocal expandtab shiftwidth=2 softtabstop=2
@@ -822,6 +823,11 @@ let g:indent_guides_enable_on_vim_startup = 1
 " Configure browser for haskell_doc.vim
 let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
+
+" -------------------------------------
+" Vim-Go
+" -------------------------------------
+let g:go_bin_path = expand("~/.go/bin")
 
 " -------------------------------------
 " Functions
