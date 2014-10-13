@@ -1,5 +1,7 @@
 alias love="/Applications/love.app/Contents/MacOS/love"
 
+alias ssh='TERM=xterm-256color ssh'
+
 alias mvnb='mvn -DskipTests -DskipITs'
 alias mvnr='mvn jetty:run'
 alias mvnl='MAVEN_OPTS="-Xmx8g" mvn clean package exec:java'
