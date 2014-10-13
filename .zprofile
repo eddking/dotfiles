@@ -34,4 +34,4 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Hom
 export TERM=xterm-256color-italic
 
 
-. $HOME/.chef/details.sh
+. $HOME/.aws/details.sh
