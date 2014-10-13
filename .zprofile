@@ -42,4 +42,4 @@ path=(
   $path
 )
 
-. $HOME/.chef/details.sh
+. $HOME/.aws/details.sh

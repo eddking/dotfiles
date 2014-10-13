@@ -1,9 +1,9 @@
 set nocompatible        " Must be first line
 
 filetype on
-        filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " -------------------------------------
 " Plugins
@@ -92,12 +92,14 @@ if executable('ctags')
     Plugin 'majutsushi/tagbar'
 endif
 
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " -------------------------------------
 " General Config
 " -------------------------------------
 
 set shortmess+=filmnrxoOtT  " Abbrev. of messages (avoids 'hit enter')
-filetype plugin indent on   " Automatically detect file types.
 syntax on                   " Syntax highlighting
 set mouse=a                 " Automatically enable mouse usage
 set mousehide               " Hide the mouse cursor while typing
