@@ -1,5 +1,6 @@
 /*
 !.*
+.aws/
 .Bome/
 .CFUserTextEncoding
 .DS_Store
@@ -75,6 +76,7 @@
 .rbenv/
 .ropeproject/
 .rvm/
+.s3cfg
 .sh_history
 .sipp2.properties.xml
 .slocdata/
@@ -104,6 +106,12 @@
 .vimswap/
 .vimundo/
 .vimviews/
+.weechat/ssl/
+.weechat/logs/
+.weechat/scripts/
+.weechat/python/
+.weechat/ruby/
+.weechat/perl/
 .wine/
 .xbmc/
 .yjp/
