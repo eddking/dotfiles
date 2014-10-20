@@ -47,6 +47,7 @@
 .gstreamer-0.10/
 .heroku/
 .hgignore_global
+.htoprc
 .ievms/
 .irb-history
 .irssi/
@@ -74,6 +75,7 @@
 .psql_history
 .repoconfig/
 .rbenv/
+.rnd
 .ropeproject/
 .rvm/
 .s3cfg
