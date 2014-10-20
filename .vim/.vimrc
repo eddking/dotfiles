@@ -76,7 +76,6 @@ Plugin 'tpope/vim-haml'
 
 " --- Ruby bundles
 Plugin 'tpope/vim-rails'
-
 " --- Go bundles
 Plugin 'fatih/vim-go'
 
@@ -461,7 +460,7 @@ let g:EclimCompletionMethod = 'omnifunc'
 let g:NERDTreeWinSize = 50
 let g:NERDShutUp=1
 
-map \a :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <leader>a :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 
 let NERDTreeShowBookmarks=1
