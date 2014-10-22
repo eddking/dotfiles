@@ -33,3 +33,7 @@ growl_about_long_running_commands() {
   PREEXEC_CMD=
 }
 
+
+function sc() {
+ ssh -t abalone.z0o.us 'cd current && bundle exec rails console production'
+}
