@@ -97,6 +97,7 @@ filetype plugin indent on    " required
 " -------------------------------------
 " General Config
 " -------------------------------------
+set clipboard=unnamed
 
 set shortmess+=filmnrxoOtT  " Abbrev. of messages (avoids 'hit enter')
 syntax on                   " Syntax highlighting
