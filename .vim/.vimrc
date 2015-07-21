@@ -1,98 +1,122 @@
-set nocompatible        " Must be first line
+if has('vim_starting')
+  if &compatible
+    set nocompatible
+  endif
+
+  " Required:
+  set runtimepath+=/Users/edd/.vim/bundle/neobundle.vim/
+endif
+
+if has('nvim')
+  runtime! plugin/python_setup.vim
+endif
 
 filetype on
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+
+call neobundle#begin(expand('/Users/edd/.vim/bundle'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 
 " -------------------------------------
 " Plugins
 " -------------------------------------
-Plugin 'gmarik/vundle'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'spf13/vim-colors'
-Plugin 'tpope/vim-surround'
-Plugin 'spf13/vim-autoclose'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'mbbill/undotree' " I've never needed this
-Plugin 'myusuf3/numbers.vim'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'vim-scripts/restore_view.vim'
-Plugin 'mhinz/vim-signify'
-Plugin 'tpope/vim-abolish.git'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'matchit.zip'
-Plugin 'mileszs/ack.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'godlygeek/tabular'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+NeoBundle 'Valloric/YouCompleteMe', {
+\   'build': {
+\       'others': './install.sh'
+\   }
+\}
 
-Plugin 'eddking/eclim-vundle'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'spf13/vim-colors'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'spf13/vim-autoclose'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'myusuf3/numbers.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'vim-scripts/restore_view.vim'
+NeoBundle 'mhinz/vim-signify'
+NeoBundle 'tpope/vim-abolish.git'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'matchit.zip'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'jpalardy/vim-slime'
+NeoBundle 'eddking/eclim-vundle'
 
 " --- Python bundles
-""Plugin 'klen/python-mode'
-""Plugin 'python_match.vim'
-""Plugin 'pythoncomplete'
+""NeoBundle 'klen/python-mode'
+""NeoBundle 'python_match.vim'
+""NeoBundle 'pythoncomplete'
 
 " --- Javascript bundles
-Plugin 'elzr/vim-json'
-Plugin 'groenewege/vim-less'
-Plugin 'pangloss/vim-javascript'
-Plugin 'briancollins/vim-jst'
-Plugin 'kchmck/vim-coffee-script'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'briancollins/vim-jst'
+NeoBundle 'kchmck/vim-coffee-script'
 
 " --- Haskell bundles
-Plugin 'travitch/hasksyn'
-Plugin 'dag/vim2hs'
-Plugin 'Twinside/vim-haskellConceal'
-Plugin 'lukerandall/haskellmode-vim'
-Plugin 'ujihisa/neco-ghc'
 " ghcmod requires: cabal install ghc-mod
-Plugin 'eagletmt/ghcmod-vim'
-" vimproc requires compiling: cd ~/.vim/bundle/vimproc && make
-Plugin 'Shougo/vimproc'
-" cumino requires tmux>1.5 :  brew install tmux
-Plugin 'adinapoli/cumino'
-" hdevtools requires: cabal install hdevtools
-Plugin 'bitc/vim-hdevtools'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'bitc/vim-hdevtools'
+NeoBundle 'eagletmt/unite-haddock'
 
 " --- HTML bundles
-Plugin 'amirh/HTML-AutoCloseTag'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'tpope/vim-haml'
+NeoBundle 'amirh/HTML-AutoCloseTag'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'tpope/vim-haml'
 
 " --- Ruby bundles
-Plugin 'tpope/vim-rails'
+NeoBundle 'tpope/vim-rails'
 " --- Go bundles
-Plugin 'fatih/vim-go'
+NeoBundle 'fatih/vim-go'
 
 " --- Misc lang bundles
-Plugin 'tpope/vim-markdown'
-Plugin 'spf13/vim-preview'
-Plugin 'tpope/vim-cucumber'
-Plugin 'Puppet-Syntax-Highlighting'
-
-Plugin 'bling/vim-airline'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'spf13/vim-preview'
+NeoBundle 'tpope/vim-cucumber'
+NeoBundle 'Puppet-Syntax-Highlighting'
+NeoBundle 'slim-template/vim-slim.git'
+NeoBundle 'neo4j-contrib/cypher-vim-syntax'
+NeoBundle 'bling/vim-airline'
 
 if executable('ctags')
-    Plugin 'majutsushi/tagbar'
+    NeoBundle 'majutsushi/tagbar'
 endif
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" Prompts for install if a bundle is missing
+NeoBundleCheck
 
 " -------------------------------------
 " General Config
@@ -154,7 +178,7 @@ endif
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 " let g:solarized_visibility="high"
-set background=dark
+set background=light
 color solarized
 colorscheme solarized
 
@@ -226,6 +250,7 @@ autocmd FileType haskell setlocal nospell
 
 
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+autocmd FileType coffee setlocal expandtab shiftwidth=2 softtabstop=2
 
 " -------------------------------------
 " Make Pretty
@@ -234,7 +259,7 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 " Italics are dependent on getting an in depelopment version of iTerm and changing
 " terminfo. Im using iTerm sha: b3242cc and terminfo from this gist:
 " https://gist.github.com/sos4nt/3187620     ... works like a charm
-highlight Comment cterm=italic ctermbg=8 ctermfg=10
+highlight Comment cterm=italic ctermbg=15 ctermfg=14
 
 " Highlight trailing whitespace in a less glaring fashion
 ""highlight ExtraWhitespace ctermbg=8 ctermfg=13
@@ -244,10 +269,10 @@ highlight Comment cterm=italic ctermbg=8 ctermfg=10
 "set listchars=tab:›\ ,trail:.,extends:#,nbsp:. " :Highlight problematic whitespace
 
 "make the gitgutter background match"
-highlight SignColumn ctermbg=0
+highlight SignColumn ctermbg=7
 
 "make the tildas on empty lines invisible
-hi NonText cterm=NONE ctermbg=8 ctermfg=8
+hi NonText cterm=NONE ctermbg=15 ctermfg=15
 
 let g:airline_powerline_fonts = 1
 
@@ -291,10 +316,10 @@ nnoremap <Down>  <NOP>
 inoremap kj <Esc>
 
 " easy moving between windows
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-L> <C-W>l<C-W>_
-map <C-H> <C-W>h<C-W>_
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-H> <C-W>h
 
 " Easier switching between tabs
 map <S-H> gT
@@ -367,9 +392,6 @@ map <Leader>= <C-w>=
 map zl zL
 map zh zH
 
-" fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
-map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
-
 " this causes vim to leave trailing whitespace on autoindented empty lines,
 " dont worry, it gets deleted when you save. works by making an edit and then
 " undoing it"
@@ -415,6 +437,12 @@ inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menu,preview,longest
 
+" -------------------------------------
+" Ack.vim
+" -------------------------------------
+if executable('ag')
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
 
 " -------------------------------------
 " YouCompleteMe
@@ -431,6 +459,7 @@ let g:ycm_filetype_blacklist = {
     \ 'markdown' : 1,
     \ 'text' : 1,
 \}
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " -------------------------------------
 " Eclim
@@ -461,18 +490,22 @@ let g:EclimCompletionMethod = 'omnifunc'
 let g:NERDTreeWinSize = 50
 let g:NERDShutUp=1
 
-map <leader>a :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <leader>a <plug>NERDTreeMirrorToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
+let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
+let NERDTreeSortHiddenFirst=1
 let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=0
-
+let NERDTreeCascadeOpenSingleChildDir=1
+let NERDTreeMinimalUI=1
+let g:nerdtree_tabs_meaningful_tab_names = 1
+let g:nerdtree_tabs_autoclose = 1
+let g:nerdtree_tabs_synchronize_view = 1
 
 " -------------------------------------
 " Ctrl-P
@@ -495,11 +528,11 @@ let g:ctrlp_user_command = {
 " UltiSnips
 " -------------------------------------
 let g:snips_author = 'Edd King <eddrollerking@gmail.com>'
-
-let g:UltiSnipsExpandTrigger="§"
-let g:UltiSnipsListSnippets="<c-§>"
-let g:UltiSnipsJumpForwardTrigger="§"
-let g:UltiSnipsJumpBackwardTrigger="±"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
+let g:UltiSnipsExpandTrigger="<F11>"
+let g:UltiSnipsListSnippets="<c-F11>"
+let g:UltiSnipsJumpForwardTrigger="<F11>"
+let g:UltiSnipsJumpBackwardTrigger="<c-s-F11>"
 
 " -------------------------------------
 " Unite
@@ -811,20 +844,35 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
 " less intrusive indent guides
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=blue ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=7
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=blue ctermbg=7
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
+" -------------------------------------
+" Slime
+" -------------------------------------
+" sends text to a tmux session
+let g:slime_target = "tmux"
+let g:slime_paste_file = tempname()
 
 " -------------------------------------
-" Haskell Mode
+" Haskell
 " -------------------------------------
 
-" Configure browser for haskell_doc.vim
-let g:haddock_browser = "open"
-let g:haddock_browser_callformat = "%s %s"
+let g:ghcmod_ghc_options = ['-fno-warn-unused-binds']
+let g:syntastic_haskell_checkers = ['ghc_mod']
+
+au FileType haskell nnoremap <leader>ht :GhcModType<CR>
+au FileType haskell nnoremap <leader>h/ :GhcModTypeClear<CR>
+au FileType haskell nnoremap <leader>hc :GhcModCheck<CR>
+au FileType haskell nnoremap <leader>hl :GhcModLint<CR>
+au FileType haskell nnoremap <leader>hw :GhcModTypeInsert<CR>
+" haddock is a documentation thingie
+call unite#custom_default_action('haddock', 'browse_remote')
+au FileType haskell nnoremap <leader>hd :Unite -start-insert haddock<CR>
+au FileType haskell nnoremap <leader>hg :Unite hoogle<CR>
 
 " -------------------------------------
 " Vim-Go
@@ -882,17 +930,6 @@ let g:go_bin_path = expand("~/.go/bin")
     " }
 
     " Initialize NERDTree as needed {
-    function! NERDTreeInitAsNeeded()
-        redir => bufoutput
-        buffers!
-        redir END
-        let idx = stridx(bufoutput, "NERD_tree")
-        if idx > -1
-            NERDTreeMirror
-            NERDTreeFind
-            wincmd l
-        endif
-    endfunction
     " }
 
     " Strip whitespace {

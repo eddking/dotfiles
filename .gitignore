@@ -67,6 +67,8 @@
 .netbeans/
 .netrc
 .npm/
+.nvimlog
+.nviminfo
 .oh-my-zsh/
 .parallel/
 .pentadactyl/
@@ -90,9 +92,12 @@
 .subversion/auth/
 .sysdb20/
 .swt/
+.terraform.d/
 .terminfo/
+.tor/
 .unite/
 .vagrant.d/
+.vault_pass.txt
 .vegas/
 .vim/.netrwhist
 .vim/backup/
@@ -114,6 +119,7 @@
 .weechat/python/
 .weechat/ruby/
 .weechat/perl/
+.weechat/weechat.log
 .wine/
 .xbmc/
 .yjp/
