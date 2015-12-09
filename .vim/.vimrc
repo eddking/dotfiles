@@ -39,7 +39,8 @@ NeoBundle 'Valloric/YouCompleteMe', {
 
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'altercation/vim-colors-solarized'
+"NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'dsolstad/vim-wombat256i'
 NeoBundle 'spf13/vim-colors'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'spf13/vim-autoclose'
@@ -178,11 +179,8 @@ endif
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 " let g:solarized_visibility="high"
-set background=light
-color solarized
-colorscheme solarized
-
-
+"set background=dark
+color wombat256i "solarized
 
 set tabpagemax=15            " Only show 15 tabs
 set showmode                 " Display the current mode
@@ -259,7 +257,7 @@ autocmd FileType coffee setlocal expandtab shiftwidth=2 softtabstop=2
 " Italics are dependent on getting an in depelopment version of iTerm and changing
 " terminfo. Im using iTerm sha: b3242cc and terminfo from this gist:
 " https://gist.github.com/sos4nt/3187620     ... works like a charm
-highlight Comment cterm=italic ctermbg=15 ctermfg=14
+highlight Comment cterm=italic ctermfg=246
 
 " Highlight trailing whitespace in a less glaring fashion
 ""highlight ExtraWhitespace ctermbg=8 ctermfg=13
@@ -269,10 +267,13 @@ highlight Comment cterm=italic ctermbg=15 ctermfg=14
 "set listchars=tab:›\ ,trail:.,extends:#,nbsp:. " :Highlight problematic whitespace
 
 "make the gitgutter background match"
-highlight SignColumn ctermbg=7
+highlight SignColumn ctermbg=234
 
 "make the tildas on empty lines invisible
-hi NonText cterm=NONE ctermbg=15 ctermfg=15
+hi NonText cterm=NONE ctermbg=0 ctermfg=0
+
+hi SpellBad ctermfg=166 ctermbg=234
+hi SpellCap ctermfg=166 ctermbg=234
 
 let g:airline_powerline_fonts = 1
 
@@ -775,6 +776,11 @@ vnoremap <silent> <leader>dp :diffput<CR>
 " -------------------------------------
 
 nnoremap <silent> <leader>gg :SignifyToggle<CR>
+" fix some signify colors
+highlight DiffAdd           cterm=bold ctermbg=8 ctermfg=34
+highlight DiffDelete        cterm=bold ctermbg=8 ctermfg=160
+highlight DiffChange        cterm=bold ctermbg=8 ctermfg=208
+
 
 " -------------------------------------
 " Session List
@@ -844,8 +850,8 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
 " less intrusive indent guides
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=7
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=blue ctermbg=7
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=8
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=8
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
