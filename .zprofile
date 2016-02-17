@@ -13,7 +13,7 @@ export LESS='-g -i -M -R -S -w -z-4'
 export NODE_PATH="/usr/local/lib/node"
 
 #----- JAVA ------
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home"
 
 #----- PYTHON ------
 
