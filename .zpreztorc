@@ -17,9 +17,10 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'autosuggestions' \
   'prompt'
 
-zstyle ':prezto:module:editor' keymap 'vi'
+zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle ':prezto:module:gnu-utility' prefix 'g'
 zstyle ':prezto:module:editor:info:keymap:primary' format '>>>'

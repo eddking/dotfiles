@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 alias love="/Applications/love.app/Contents/MacOS/love"
 
 alias ssh='TERM=xterm-256color ssh'
@@ -23,6 +25,11 @@ alias gad='git add'
 alias grs='git reset'
 alias gdf='git diff'
 alias gbr='git branch'
+
+#emacs='/Applications/Emacs.app "$@"'
+#alias emacs='emacsclient "$@" -a ""'
+alias emacs='emacsclient -n -a emacs'
+
 
 # Git remove deleted
 alias grmd='git status -s | grep "^ D" | cut -f 3 -d " " | xargs -I % git rm %'

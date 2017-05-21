@@ -68,6 +68,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'eddking/eclim-vundle'
+NeoBundle 'rking/ag.vim'
 
 " --- Python bundles
 ""NeoBundle 'klen/python-mode'

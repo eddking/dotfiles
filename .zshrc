@@ -19,3 +19,6 @@ function vim-ctrlp () {
 }
 zle -N                vim-ctrlp
 bindkey -M viins '^P' vim-ctrlp
+bindkey -M viins 'kj' vi-cmd-mode
+bindkey '^[accept-completion' autosuggest-accept
+source /Users/edd/.iterm2_shell_integration.zsh

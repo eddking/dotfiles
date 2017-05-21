@@ -1,3 +1,3 @@
 
-compiler ghc
+"compiler ghc
 setlocal omnifunc=necoghc#omnifunc
