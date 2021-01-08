@@ -22,3 +22,5 @@ export PATH="/Users/edd/.rbenv/shims:/Users/edd/bin:/Users/edd/Library/Haskell/b
   #/Applications/Postgres.app/Contents/Versions/9.3/bin
   #$path
 #)
+
+export NVM_DIR="$HOME/.nvm"

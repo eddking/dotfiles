@@ -91,6 +91,7 @@
 .nviminfo
 .nvimlog
 .nvimrc
+.nvm/
 .oh-my-zsh/
 .p2/
 .packer.d/

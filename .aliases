@@ -26,6 +26,8 @@ alias grs='git reset'
 alias gdf='git diff'
 alias gbr='git branch'
 
+alias ag='rg' # cant change the muscle memory fml
+
 #emacs='/Applications/Emacs.app "$@"'
 #alias emacs='emacsclient "$@" -a ""'
 alias emacs='emacsclient -n -a emacs'
