@@ -2,10 +2,10 @@ if has('vim_starting')
   if &compatible
     set nocompatible
   endif
-
   " Required:
-  set runtimepath+=/Users/edd/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
+
 
 if has('nvim')
   runtime! plugin/python_setup.vim
@@ -14,7 +14,7 @@ endif
 filetype on
 filetype off
 
-call neobundle#begin(expand('/Users/edd/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -90,7 +90,7 @@ NeoBundle 'bitc/vim-hdevtools'
 NeoBundle 'eagletmt/unite-haddock'
 
 " --- HTML bundles
-NeoBundle 'amirh/HTML-AutoCloseTag'
+" NeoBundle 'amirh/HTML-AutoCloseTag'  --- This no longer exists :(
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-haml'
 

@@ -1,4 +1,4 @@
-. /Users/edd/.zprezto/runcoms/zshenv
+. ~/.zprezto/runcoms/zshenv
 
 export LANG='en_GB.UTF-8'
 

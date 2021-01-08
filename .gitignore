@@ -64,6 +64,8 @@
 .ipython/
 .irb-history
 .irssi/
+.iterm2/
+.iterm2_shell_integration.zsh
 .ivy2/
 .java/
 .lesshst
@@ -157,3 +159,4 @@
 .zprezto/
 .zsh-update
 .zsh_history
+.zsh_sessions/

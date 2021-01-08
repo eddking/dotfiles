@@ -1,4 +1,4 @@
-. /Users/edd/.zprezto/runcoms/zprofile
+. $HOME/.zprezto/runcoms/zprofile
 
 export EDITOR='vim'
 export VISUAL='vim'
@@ -10,9 +10,7 @@ export LESS='-g -i -M -R -S -w -z-4'
 #----- TERMINFO ------
 export TERM=xterm-256color-italic
 
-. $HOME/.aws/details.sh
+#. $HOME/.aws/details.sh
 
-eval $(_facelesscmd env init)
+# eval $(_facelesscmd env init)
 
-export YIELDIFY_PATH="$HOME/.yieldify"
-source $YIELDIFY_PATH/.facelessrc

@@ -1,4 +1,4 @@
-. /Users/edd/.zprezto/runcoms/zshrc
+. ~/.zprezto/runcoms/zshrc
 
 unsetopt correct_all
 unsetopt share_history
@@ -21,4 +21,4 @@ zle -N                vim-ctrlp
 bindkey -M viins '^P' vim-ctrlp
 bindkey -M viins 'kj' vi-cmd-mode
 bindkey '^[accept-completion' autosuggest-accept
-source /Users/edd/.iterm2_shell_integration.zsh
+source ~/.iterm2_shell_integration.zsh
