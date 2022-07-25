@@ -1,0 +1,119 @@
+if has('vim_starting')
+  if &compatible
+    set nocompatible
+  endif
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-surround'
+
+call neobundle#end()
+
+" -------------------------------------
+" General Config
+" -------------------------------------
+set clipboard=unnamed
+set incsearch                   " Find as you type search
+set hlsearch                    " Highlight search terms
+set ignorecase                  " Case insensitive search
+set smartcase                   " Case sensitive when uc present
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set nowrap                      " Do not wrap long lines
+set autoindent                  " Indent at the same level of the previous line
+set shiftwidth=2                " Use indents of 2 spaces
+set expandtab                   " Tabs are spaces, not tabs
+set tabstop=2                   " An indentation every 2 columns
+set softtabstop=2               " Let backspace delete indent
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join
+set splitright                  " Puts new vsplit windows to the right of the current
+
+" -------------------------------------
+" (Re)Mapping
+" -------------------------------------
+
+let mapleader = " "
+
+" disable the nav keys
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+nnoremap <Left>  <NOP>
+nnoremap <Right> <NOP>
+nnoremap <Up>    <NOP>
+nnoremap <Down>  <NOP>
+
+" map esc to kj
+" This is done in vscode too (probably not needed here, but what the hell)
+inoremap kj <Esc> 
+
+" Better Navigation
+nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
+nnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
+nnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
+nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
+
+nnoremap <silent> L :call VSCodeNotify('workbench.action.nextEditorInGroup')<CR>
+nnoremap <silent> H :call VSCodeNotify('workbench.action.previousEditorInGroup')<CR>
+
+nnoremap <leader>bp :call VSCodeNotify('workbench.action.openPreviousRecentlyUsedEditorInGroup')<CR>
+nnoremap <leader>bn :call VSCodeNotify('workbench.action.openNextRecentlyUsedEditorInGroup')<CR>
+
+nnoremap <leader>f :call VSCodeNotify('workbench.view.explorer')<CR>
+nnoremap <C-p> :call VSCodeNotify('workbench.action.quickOpen')<CR>
+
+" Random show/hide things
+nnoremap <leader>a :call VSCodeNotify('workbench.action.toggleActivityBarVisibility')<CR>
+nnoremap <leader>O :call VSCodeNotify('workbench.action.toggleFullScreen')<CR>
+nnoremap <leader>b :call VSCodeNotify('breadcrumbs.toggle')<CR>
+
+" Wrapped lines goes down/up to next row, rather than next line in file.
+nnoremap j gj
+nnoremap k gk
+
+" Same for 0, home, end, etc
+noremap $ g$
+noremap <End> g<End>
+noremap 0 g0
+noremap <Home> g<Home>
+noremap ^ g^
+
+" File Keybinds
+nnoremap <leader>w :call VSCodeNotify('workbench.action.files.save')<CR>
+nnoremap <leader>q :call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+
+nnoremap <leader>o :call VSCodeNotify('editor.action.goToDeclaration')<CR>
+nnoremap <leader>r :call VSCodeNotify('editor.action.rename')<CR>
+nnoremap <leader>x :call VSCodeNotify('editor.action.quickFix')<CR>
+nnoremap <leader>e :call VSCodeNotify('editor.action.refactor')<CR>
+
+" Hover Keybind
+nnoremap <leader>i :call VSCodeNotify('editor.action.showHover')<CR>
+
+" Window Keybinds
+nnoremap <leader>w/ :vsplit<CR>
+nnoremap <leader>w- :split<CR>
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+" Toggle search highlight
+nmap <silent> <leader>/ :set invhlsearch<CR>
+
+" Find merge conflict markers
+map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
+" Allow using the repeat operator with a visual selection (!)
+vnoremap . :normal .<CR>

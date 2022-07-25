@@ -1,7 +1,7 @@
 . $HOME/.zprezto/runcoms/zprofile
 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 
 # Set the default Less options.
@@ -14,3 +14,4 @@ export TERM=xterm-256color-italic
 
 # eval $(_facelesscmd env init)
 
+export GPG_TTY=$(tty)

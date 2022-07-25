@@ -24,3 +24,7 @@ export PATH="/Users/edd/.rbenv/shims:/Users/edd/bin:/Users/edd/Library/Haskell/b
 #)
 
 export NVM_DIR="$HOME/.nvm"
+
+export AG_DOCS_KEY="$HOME/.ssl/localhost-key.pem"
+export AG_DOCS_CRT="$HOME/.ssl/localhost.pem"
+

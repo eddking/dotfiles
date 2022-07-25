@@ -67,7 +67,6 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'eddking/eclim-vundle'
 NeoBundle 'rking/ag.vim'
 
 " --- Python bundles
@@ -79,8 +78,11 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'briancollins/vim-jst'
-NeoBundle 'kchmck/vim-coffee-script'
+
+" --- Typescript bundles
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'maxmellon/vim-jsx-pretty'
+NeoBundle 'jparise/vim-graphql'
 
 " --- Haskell bundles
 " ghcmod requires: cabal install ghc-mod
@@ -92,10 +94,10 @@ NeoBundle 'eagletmt/unite-haddock'
 " --- HTML bundles
 " NeoBundle 'amirh/HTML-AutoCloseTag'  --- This no longer exists :(
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'tpope/vim-haml'
 
 " --- Ruby bundles
-NeoBundle 'tpope/vim-rails'
+" "NeoBundle 'tpope/vim-rails'
+
 " --- Go bundles
 NeoBundle 'fatih/vim-go'
 
@@ -103,9 +105,9 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'spf13/vim-preview'
 NeoBundle 'tpope/vim-cucumber'
-NeoBundle 'Puppet-Syntax-Highlighting'
-NeoBundle 'slim-template/vim-slim.git'
-NeoBundle 'neo4j-contrib/cypher-vim-syntax'
+" "NeoBundle 'Puppet-Syntax-Highlighting'
+" "NeoBundle 'slim-template/vim-slim.git'
+" "NeoBundle 'neo4j-contrib/cypher-vim-syntax'
 NeoBundle 'bling/vim-airline'
 
 if executable('ctags')
@@ -180,7 +182,7 @@ endif
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 " let g:solarized_visibility="high"
-"set background=dark
+set background=dark
 color wombat256i "solarized
 
 set tabpagemax=15            " Only show 15 tabs
@@ -226,14 +228,15 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=4                " Use indents of 4 spaces
+set shiftwidth=2                " Use indents of 4 spaces
 set expandtab                   " Tabs are spaces, not tabs
-set tabstop=4                   " An indentation every four columns
-set softtabstop=4               " Let backspace delete indent
+set tabstop=2                   " An indentation every four columns
+set softtabstop=2               " Let backspace delete indent
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join
 set splitright                  " Puts new vsplit windows to the right of the current
 "set splitbelow                  " Puts new split windows to the bottom of the current
 set pastetoggle=<F12>           " pastetoggle
+set signcolumn=yes
 
 "Strip trailing whitespace when writing files
 autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer>  call StripTrailingWhitespace()
@@ -302,7 +305,7 @@ endfunction
 " (Re)Mapping
 " -------------------------------------
 
-let mapleader = ','
+let mapleader = " "
 
 " disable the nav keys
 inoremap <Left>  <NOP>
@@ -326,6 +329,10 @@ map <C-H> <C-W>h
 " Easier switching between tabs
 map <S-H> gT
 map <S-L> gt
+
+" Easier switching between buffers
+map <leader>bn ]b
+map <leader>bp [b
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
@@ -361,7 +368,6 @@ nmap <silent> <leader>/ :set invhlsearch<CR>
 
 " Find merge conflict markers
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
-
 
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
@@ -449,42 +455,32 @@ endif
 " -------------------------------------
 " YouCompleteMe
 " -------------------------------------
+
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_always_populate_location_list = 1
 " dont want any random buffers popping up
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
-" prevent interference with eclim locate buffer"
+
 let g:ycm_filetype_blacklist = {
     \ 'locate_prompt' : 1,
     \ 'notes' : 1,
     \ 'markdown' : 1,
     \ 'text' : 1,
 \}
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:ycm_semantic_triggers = {
+    \ 'haskell' : ['.'],
+    \ 'typescript' : ['.']
+\}
+" override default highlighting for signature help so its readable
+hi YCMInverse term=bold cterm=bold gui=bold 
 
-" -------------------------------------
-" Eclim
-" -------------------------------------
-let g:EclimJavaSearchSingleResult = 'tabnew'
-let g:EclimValidateSortResults = 'severity'
-let g:EclimLogLevel = 2
-let g:EclimSignLevel = 3
-let g:EclimLocateFileFuzzy = 0
-let g:EclimCompletionMethod = 'omnifunc'
-" caps lock key is mapped to § using PCKeyboardHack
-"nmap §1 :JavaCorrect<CR>
-"nmap §f :JavaFormat<CR>
-"nmap §g :JavaSearchContext<CR>
-"nmap §i :JavaImport<CR>
-"nmap §o :JavaImportOrganize<CR>
-"nmap §d :JavaDocPreview<CR>
-"nmap §c :JavaRename
-"nmap §t :JavaSearch
-"nmap §r :LocateFile<CR>
-"nmap §n :lnext<CR>
-"nmap §p :lprev<CR>
-"nmap §q :lclose<CR>
+" colors are a bit wonky, but this atleast is legible. pinkish...
+""hi Pmenu ctermfg=9
+
+nnoremap <leader>o :YcmCompleter GoTo<CR>
+nnoremap <leader>r :YcmCompleter RefactorRename<space>
 
 " -------------------------------------
 " NerdTree
@@ -492,8 +488,9 @@ let g:EclimCompletionMethod = 'omnifunc'
 let g:NERDTreeWinSize = 50
 let g:NERDShutUp=1
 
-map <leader>a <plug>NERDTreeMirrorToggle<CR>
-map <leader>e :NERDTreeFind<CR>
+map <leader>ft <plug>NERDTreeMirrorToggle<CR>
+" map <leader>e :NERDTreeFind<CR>  " dont think this is used, so disabled for
+" now
 
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -515,7 +512,7 @@ let g:nerdtree_tabs_synchronize_view = 1
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
 let g:ctrlp_user_command = {
@@ -531,10 +528,10 @@ let g:ctrlp_user_command = {
 " -------------------------------------
 let g:snips_author = 'Edd King <eddrollerking@gmail.com>'
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
-let g:UltiSnipsExpandTrigger="<F11>"
-let g:UltiSnipsListSnippets="<c-F11>"
-let g:UltiSnipsJumpForwardTrigger="<F11>"
-let g:UltiSnipsJumpBackwardTrigger="<c-s-F11>"
+let g:UltiSnipsExpandTrigger="`"
+let g:UltiSnipsListSnippets="<c-`>"
+let g:UltiSnipsJumpForwardTrigger="`"
+let g:UltiSnipsJumpBackwardTrigger="<s-`>"
 
 " -------------------------------------
 " Unite
@@ -579,7 +576,7 @@ let g:unite_source_menu_menus.commands.command_candidates = [
     \['⇒ git prompt               (Fugitive)                                                             ', 'exe "Git! " input("git command: ")'],
     \['⇒ diff get                 (Fugitive)                                                          ,dg', 'normal ,dg'],
     \['⇒ diff put                 (Fugitive)                                                          ,dp', 'normal ,dp'],
-    \['⇒ nerd tree toggle         (NERDTree)                                                           \a', 'normal \a'],
+    \['⇒ nerd tree toggle         (NERDTree)                                                           ,a', 'normal ,a'],
     \['⇒ nerd tree find           (NERDTree)                                                           ,e', 'normal ,e'],
     \['⇒ add line above           (vim-unimpaired)                                               [<Space>', 'exe "normal [\<Space>"'],
     \['⇒ add line below           (vim-unimpaired)                                               ]<Space>', 'exe "normal ]\<Space>"'],
@@ -714,9 +711,9 @@ let g:unite_source_menu_menus.commands.command_candidates = [
     \['▷ jump to tag definition                                                                    ctrl-]', 'exe "normal \<ctrl-]>" '],
     \]
 
-nmap <silent> ,<Space> :Unite -start-insert menu:commands<CR>
-nmap <silent> ,b :Unite -no-split buffer<CR>
-nmap <silent> ,y :Unite history/yank<CR>
+nmap <silent> <leader><Space> :Unite -start-insert menu:commands<CR>
+nmap <silent> <leader>bb :Unite -no-split buffer<CR>
+nmap <silent> <leader>y :Unite history/yank<CR>
 
 " Custom Unite settings
 autocmd FileType unite call s:unite_settings()

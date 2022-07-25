@@ -2,10 +2,12 @@
 	ui = true
 [user]
 	name = Edd King
-	email = edd@academia.edu
+	email = edmund.king@ag-grid.com
 [push]
 	default = upstream
 [core]
 	excludesfile = /Users/edd/.gitignore_global
 [github]
 	user = eddking
+[pull]
+	ff = only
